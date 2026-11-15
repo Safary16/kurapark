@@ -55,10 +55,11 @@ a{color:var(--morado);text-decoration:none}
 .nav-links{display:flex;gap:1.3rem;align-items:center}
 .nav-links a{color:var(--ink);font-weight:800;font-size:.93rem}
 .nav-links a:hover{color:var(--morado)}
+.nav-links a.btn,.nav-links a.btn:hover{color:#fff}
 .btn{display:inline-block;background:var(--morado);color:#fff;font-weight:800;padding:.75rem 1.6rem;border-radius:999px;box-shadow:0 6px 18px rgba(123,47,242,.35);transition:transform .18s,box-shadow .18s;border:none;cursor:pointer;font-size:1rem}
 .btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 26px rgba(123,47,242,.45)}
 .btn:active{transform:scale(.96);box-shadow:0 2px 8px rgba(123,47,242,.3)}
-.btn-wa{background:#25D366;box-shadow:0 6px 18px rgba(37,211,102,.35)}
+.btn-wa{background:#0B7A45;box-shadow:0 6px 18px rgba(37,211,102,.35)}
 .btn-ghost{background:transparent;color:var(--morado);box-shadow:inset 0 0 0 3px var(--morado)}
 @media(max-width:760px){.nav-links a:not(.btn){display:none}}
 
@@ -103,15 +104,15 @@ section{padding:4.2rem 0}
 .zona:nth-child(2) .ic{color:var(--rosa)}
 
 /* FIESTAS (cumple + cursos) */
-.fiestas{background:linear-gradient(140deg,var(--morado),#9A4BFF 55%,var(--rosa));color:#fff}
+.fiestas{background:linear-gradient(140deg,#5B1DB8,#7B2FF2 55%,#A3237A);color:#fff}
 .fiestas .tag{background:var(--amarillo);color:var(--ink)}
-.fiestas .sec-head p{color:rgba(255,255,255,.92)}
+.fiestas .sec-head p{color:#fff}
 .fiestas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
 @media(max-width:860px){.fiestas-grid{grid-template-columns:1fr}}
 .fiesta-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:var(--radius);padding:1.7rem;backdrop-filter:blur(5px)}
 .fiesta-card .foto{border-radius:18px;margin-bottom:1.1rem;width:100%;aspect-ratio:16/9;object-fit:cover}
 .fiesta-card h3{font-size:1.4rem;margin-bottom:.5rem}
-.fiesta-card p{opacity:.95;margin-bottom:.8rem}
+.fiesta-card p{margin-bottom:.8rem}
 .fiesta-card ul{list-style:none;display:grid;gap:.45rem;margin-bottom:1.3rem}
 .fiesta-card li{display:flex;gap:.55rem;align-items:flex-start;font-weight:700;font-size:.95rem}
 .fiesta-card li::before{content:"✓";background:var(--amarillo);color:var(--ink);font-weight:900;border-radius:50%;width:1.35rem;height:1.35rem;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.82rem;margin-top:.12rem}
@@ -139,8 +140,8 @@ section{padding:4.2rem 0}
 #popScore{background:var(--amarillo);color:var(--ink);border-radius:999px;padding:.2rem .8rem;font-size:.9rem}
 #popTime{background:var(--morado-soft);border-radius:999px;padding:.2rem .8rem;font-size:.9rem}
 #runner{width:100%;max-width:680px;display:block;margin:0 auto;border-radius:22px;box-shadow:var(--sombra);background:linear-gradient(#F7EFFF,#EDE0FF);touch-action:manipulation;cursor:pointer}
-.firma{margin-top:1rem;opacity:.85;font-size:.85rem}
-.firma b{color:var(--rosa)}
+.firma{margin-top:1rem;font-size:.85rem}
+.firma b{color:#FF8FCB}
 /* MAPA & JUEGO */
 .mapa{background:#fff}
 .mapa-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.6rem}
@@ -205,7 +206,7 @@ footer{background:#1A0E2E;color:#C9B8E8;padding:2.4rem 0;font-size:.9rem}
 /* barra fija mobile */
 .mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--ink);color:#fff;display:none;align-items:center;gap:.6rem;padding:.6rem 1rem;font-size:.85rem;font-weight:800;box-shadow:0 -6px 24px rgba(0,0,0,.18)}
 .mobile-bar .mb-st{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mobile-bar .mb-wa{flex-shrink:0;background:#25D366;color:#fff;border-radius:999px;padding:.45rem .95rem;font-size:.82rem;display:inline-flex;align-items:center;gap:.35rem;margin-left:auto}
+.mobile-bar .mb-wa{flex-shrink:0;background:#0B7A45;color:#fff;border-radius:999px;padding:.45rem .95rem;font-size:.82rem;display:inline-flex;align-items:center;gap:.35rem;margin-left:auto}
 @media(max-width:760px){.mobile-bar{display:flex}.wa-float{bottom:4.2rem}}
 body{padding-bottom:0}
 @media(max-width:760px){body{padding-bottom:3.4rem}}
@@ -250,7 +251,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .ev div{padding:1.1rem 1.3rem 1.4rem}
 .ev h3{font-size:1.15rem;margin-bottom:.3rem}
 .ev p{font-size:.92rem;color:#6E5A8C}
-.ev .pill{display:inline-block;background:var(--verde);color:#063;font-weight:800;font-size:.72rem;padding:.2rem .7rem;border-radius:999px;margin-bottom:.5rem}
+.ev .pill{display:inline-block;background:var(--verde);color:#032B17;font-weight:800;font-size:.72rem;padding:.2rem .7rem;border-radius:999px;margin-bottom:.5rem}
 .com-nota{text-align:center;margin-top:1.6rem;font-weight:700;color:#6E5A8C}
 /* reel de IG */
 .ig-strip{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1rem}
@@ -265,10 +266,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .faq summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--morado)}
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin-top:.6rem;color:#4d3b6b}
-.cta-mid{background:linear-gradient(90deg,var(--morado),#9A4BFF);color:#fff;padding:2.6rem 0}
+.cta-mid{background:linear-gradient(90deg,#5B1DB8,#7B2FF2);color:#fff;padding:2.6rem 0}
 .cta-mid-in{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap}
 .cta-mid h3{font-size:clamp(1.3rem,3vw,1.8rem);font-family:'Baloo 2',system-ui,sans-serif}
-.cta-mid p{margin:.3rem 0 0;opacity:.92}
+.cta-mid p{margin:.3rem 0 0}
 .arcade{background:var(--morado-soft)}
 .arcade-grid{display:grid;gap:1.4rem}
 .arcade-grid .mapa-card{background:#fff}
@@ -586,7 +587,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
       <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener">Instagram @kurapark_</a>
     </div>
   </div>
-  <div class="container" style="margin-top:1.5rem;opacity:.55;font-size:.78rem">© 2026 KURAPARK · Curacaví, Chile<br><span class="firma">Sitio web por <b>Safary16</b> 💜</span></div>
+  <div class="container" style="margin-top:1.5rem;color:#B9A8D8;font-size:.78rem">© 2026 KURAPARK · Curacaví, Chile<br><span class="firma">Sitio web por <b>Safary16</b> 💜</span></div>
 </footer>
 
 <!-- Barra fija mobile -->
