@@ -773,10 +773,10 @@ gen();
       if (prox){
         const hr = String(prox.getHours()).padStart(2,'0')+':'+String(prox.getMinutes()).padStart(2,'0');
         const falt = prox.getTime()-now.getTime();
-        txt = (prox.getDate()===now.getDate() ? 'Abrimos hoy a las '+hr : 'Abrimos '+dias[prox.getDay()]+' '+hr) + ' (en '+fmt(falt)+')';
+        txt = (prox.getDate()===now.getDate() ? '¡Abrimos HOY a las '+hr : 'Abrimos '+dias[prox.getDay()]+' a las '+hr) + ' (en '+fmt(falt)+')';
       }
       banner.className = 'banner-hoy closed';
-      banner.innerHTML = '🌙 <b>HOY CERRADO</b> · '+txt;
+      banner.innerHTML = '🌙 <b>AHORA CERRADO</b> · '+txt;
       reloj.className = 'reloj-kura closed';
       reloj.innerHTML = '⏰ '+txt;
       const mb=document.getElementById('mbStatus');
