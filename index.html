@@ -231,7 +231,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .hero-stories{position:relative;height:520px;max-width:470px;margin:0 auto;width:100%}
 .story{position:absolute;border-radius:26px;overflow:hidden;box-shadow:0 22px 46px rgba(60,20,120,.28);border:6px solid #fff;background:#fff}
 .story img{width:100%;height:100%;object-fit:cover}
-.story.s1{width:58%;aspect-ratio:9/16;left:0;top:34px;transform:rotate(-6deg);z-index:2}
+.story.s1{width:58%;aspect-ratio:361/580;left:0;top:34px;transform:rotate(-6deg);z-index:2}
 .story.s2{width:62%;aspect-ratio:8/5;right:0;top:40px;transform:rotate(5deg);z-index:1}
 .story.s3{width:50%;aspect-ratio:4/5;right:3%;bottom:0;transform:rotate(-3deg);z-index:3}
 .hero-stories .float-chip{z-index:4}
@@ -273,6 +273,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .arcade{background:var(--morado-soft)}
 .arcade-grid{display:grid;gap:1.4rem}
 .arcade-grid .mapa-card{background:#fff}
+
+/* afiches completos + lightbox */
+.poster{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:18px;background:#2a1650;cursor:zoom-in;margin-bottom:1.1rem}
+.ev .poster{border-radius:0;margin:0}
+.poster::before{content:"";position:absolute;inset:-24px;background:var(--bg) center/cover;filter:blur(20px) brightness(.7)}
+.poster img,.ev .poster img{position:relative;width:100%;height:100%;aspect-ratio:auto;object-fit:contain}
+.poster .zoom{position:absolute;right:.6rem;bottom:.6rem;background:rgba(20,10,35,.82);color:#fff;font-size:.74rem;font-weight:800;padding:.28rem .7rem;border-radius:999px;pointer-events:none}
+#lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;margin:auto;overflow:visible}
+#lb::backdrop{background:rgba(20,10,35,.9)}
+#lb img{display:block;max-width:94vw;max-height:88vh;width:auto;height:auto;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#lb button{position:absolute;top:-14px;right:-10px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:1.3rem;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.share-btn{background:#fff;color:var(--ink);box-shadow:none;margin-top:.8rem;border:0;font:inherit;font-weight:800;cursor:pointer}
+.waze{display:inline-block;margin-left:.8rem}
 </style>
 </head>
 <body>
@@ -361,7 +374,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <address>
           Ambrosio O'Higgins #1730<br>
           Curacaví, Región Metropolitana
-          <b style="display:block;margin-top:.5rem"><a href="https://www.google.com/maps/search/?api=1&query=Ambrosio+O%27Higgins+1730+Curacav%C3%AD" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></b>
+          <b style="display:block;margin-top:.5rem"><a href="https://www.google.com/maps/search/?api=1&query=Ambrosio+O%27Higgins+1730+Curacav%C3%AD" target="_blank" rel="noopener">Google Maps ↗</a><a class="waze" href="https://waze.com/ul?q=Ambrosio%20O%27Higgins%201730%20Curacav%C3%AD&navigate=yes" target="_blank" rel="noopener">Waze ↗</a></b>
         </address>
       </div>
       <div class="info-card reveal">
@@ -436,7 +449,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     </div>
     <div class="fiestas-grid">
       <div class="fiesta-card reveal">
-        <img class="foto" src="img/story-cumple.jpg" alt="Niña sonriendo en el área de juegos de KURAPARK, celebra tu cumpleaños" loading="lazy" style="object-position:50% 25%">
+        <div class="poster" style="--bg:url(img/cumple-afiche.jpg)"><img src="img/cumple-afiche.jpg" alt="Afiche: celebra tu cumpleaños en KURAPARK, cotiza escribiéndonos a nuestro Instagram" width="361" height="640" loading="lazy"><span class="zoom">🔍 Ver completo</span></div>
         <h3>🎂 Cumpleaños</h3>
         <p>Un espacio ideal para los más pequeños: juegos, comida y cero estrés para ti.</p>
         <ul>
@@ -448,13 +461,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Quiero%20cotizar%20un%20cumplea%C3%B1os%20en%20KURAPARK%20%F0%9F%8E%82" target="_blank" rel="noopener">Cotiza tu cumpleaños</a>
       </div>
       <div class="fiesta-card reveal">
-        <img class="foto" src="img/hero.jpg" alt="Paseos de curso y fin de año en KURAPARK" loading="lazy">
+        <div class="poster" style="--bg:url(img/paseos.jpg)"><img src="img/paseos.jpg" alt="Afiche paseos de curso fin de año: 2 horas para jugar, uso exclusivo, sala para decorar, estacionamiento y monitor a cargo" width="480" height="640" loading="lazy"><span class="zoom">🔍 Ver completo</span></div>
         <h3>🎒 Paseos de curso y fin de año</h3>
         <p>Despide el año a pura entretención: colegios y jardines ya están agendando, ¡y los valores para cursos son súper convenientes!</p>
         <ul>
-          <li>Para todos los colegios y jardines</li>
-          <li>Supervisión y seguridad durante toda la visita</li>
-          <li>Fechas de noviembre y diciembre con cupos</li>
+          <li>Para todos los colegios y jardines, con estacionamiento</li>
+          <li>2 horas para jugar con uso exclusivo del parque</li>
+          <li>Sala para decorar y monitor a cargo</li>
           <li>Cotización rápida por WhatsApp o DM</li>
         </ul>
         <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Somos%20un%20colegio%2Fjard%C3%ADn%20y%20queremos%20cotizar%20un%20paseo%20de%20fin%20de%20a%C3%B1o%20%F0%9F%8E%92" target="_blank" rel="noopener">Cotiza tu paseo de curso</a>
@@ -558,9 +571,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
       <p>KURAPARK también es punto de encuentro para las familias de Curacaví.</p>
     </div>
     <div class="ev-grid">
-      <article class="ev reveal"><img src="img/evento-sentidos.jpg" alt="Afiche de Criar con Sentidos en KURAPARK" loading="lazy" width="512" height="640"><div><span class="pill">GRATIS</span><h3>Criar con Sentidos</h3><p>Charla para madres, padres y cuidadores: «Ellos juegan, tú descubres cómo acompañarles mejor».</p></div></article>
-      <article class="ev reveal"><img src="img/story-charla.jpg" alt="Charla gratuita Sentidos Divertidos en KURAPARK" loading="lazy" width="360" height="640"><div><span class="pill">GRATIS</span><h3>Sentidos Divertidos</h3><p>Charla gratuita sobre juego y estimulación sensorial, dentro del parque.</p></div></article>
-      <article class="ev reveal"><img src="img/story-costura.jpg" alt="Taller de costura para niñas en KURAPARK" loading="lazy" width="361" height="640"><div><h3>Talleres creativos</h3><p>Talleres como el de costura de Beluam, para que los peques aprendan jugando.</p></div></article>
+      <article class="ev reveal"><div class="poster" style="--bg:url(img/evento-sentidos.jpg)"><img src="img/evento-sentidos.jpg" alt="Afiche de Criar con Sentidos en KURAPARK" width="512" height="640" loading="lazy"><span class="zoom">🔍 Ver completo</span></div><div><span class="pill">GRATIS</span><h3>Criar con Sentidos</h3><p>Charla para madres, padres y cuidadores: «Ellos juegan, tú descubres cómo acompañarles mejor».</p></div></article>
+      <article class="ev reveal"><div class="poster" style="--bg:url(img/story-charla.jpg)"><img src="img/story-charla.jpg" alt="Charla gratuita Sentidos Divertidos en KURAPARK" width="360" height="640" loading="lazy"><span class="zoom">🔍 Ver completo</span></div><div><span class="pill">GRATIS</span><h3>Sentidos Divertidos</h3><p>Charla gratuita sobre juego y estimulación sensorial, dentro del parque.</p></div></article>
+      <article class="ev reveal"><div class="poster" style="--bg:url(img/story-costura.jpg)"><img src="img/story-costura.jpg" alt="Taller de costura para niñas en KURAPARK" width="361" height="640" loading="lazy"><span class="zoom">🔍 Ver completo</span></div><div><h3>Talleres creativos</h3><p>Talleres como el de costura de Beluam, para que los peques aprendan jugando.</p></div></article>
     </div>
     <p class="com-nota">📅 Las fechas de próximas actividades las publicamos en <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener"><b>@kurapark_</b></a></p>
   </div>
@@ -571,6 +584,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     <p>Escríbenos por WhatsApp o síguenos en Instagram para horarios de temporada, promociones y eventos.</p>
     <a class="btn" href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener">📸 @kurapark_</a><br>
     <a class="btn btn-wa" href="https://wa.me/56953700192?text=Hola%20KURAPARK!" target="_blank" rel="noopener">WhatsApp +56 9 5370 0192</a>
+    <br><button type="button" class="btn share-btn" id="shareBtn">📤 Compartir con otros papás</button>
   </div>
 </section>
 
@@ -1141,6 +1155,15 @@ requestAnimationFrame(loop);
   tick();
   setInterval(tick, 30000);
 })();
+</script>
+<dialog id="lb" aria-label="Afiche completo"><img alt=""><button type="button" aria-label="Cerrar">✕</button></dialog>
+<script>
+(()=>{const lb=document.getElementById('lb'),im=lb.querySelector('img');
+document.querySelectorAll('.poster').forEach(p=>{const i=p.querySelector('img');p.tabIndex=0;p.setAttribute('role','button');p.setAttribute('aria-label','Ver afiche completo: '+i.alt);
+const o=()=>{im.src=i.src;im.alt=i.alt;lb.showModal()};p.addEventListener('click',o);p.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();o()}})});
+lb.addEventListener('click',()=>lb.close());
+const sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',async()=>{const d={title:'KURAPARK Curacaví',text:'Mira este parque de juegos indoor en Curacaví 🎈',url:location.href.split('#')[0]};
+try{if(navigator.share)await navigator.share(d);else{await navigator.clipboard.writeText(d.url);sb.textContent='✅ Link copiado';}}catch(e){}});})();
 </script>
 </body>
 </html>
