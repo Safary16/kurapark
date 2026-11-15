@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://safary16.github.io/kurapark/sitemap.xml
