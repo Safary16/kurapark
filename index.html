@@ -130,6 +130,15 @@ section{padding:4.2rem 0}
 .lab-hint{font-size:.9rem;color:var(--morado);background:var(--morado-soft);border-radius:14px;padding:.55rem 1rem;margin-top:.7rem;font-weight:800;text-align:center}
 .lab-hud{flex-wrap:wrap}
 #labStars{background:var(--amarillo);color:var(--ink);border-radius:999px;padding:.2rem .7rem;font-size:.85rem}
+.mapa-card.wide{grid-column:1/-1}
+#pop{width:100%;max-width:680px;display:block;margin:0 auto;border-radius:22px;box-shadow:var(--sombra);background:#F3EBFF;touch-action:manipulation;cursor:pointer}
+.pop-hud{display:flex;gap:1rem;align-items:center;margin-top:.9rem;font-weight:800;font-size:.95rem;justify-content:center;flex-wrap:wrap}
+.pop-hud #popStart{margin:0}
+.pop-msg{margin-top:.7rem;background:#DFF7EA;border-radius:14px;padding:.6rem 1rem;color:#0B7A3E;font-weight:800;text-align:center;max-width:680px;margin-left:auto;margin-right:auto}
+#popScore{background:var(--amarillo);color:var(--ink);border-radius:999px;padding:.2rem .8rem;font-size:.9rem}
+#popTime{background:var(--morado-soft);border-radius:999px;padding:.2rem .8rem;font-size:.9rem}
+.firma{margin-top:1rem;opacity:.85;font-size:.85rem}
+.firma b{color:var(--rosa)}
 /* MAPA & JUEGO */
 .mapa{background:#fff}
 .mapa-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.6rem}
@@ -431,6 +440,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <p class="lab-hint">⭐ Junta las estrellas y llega a la piscina de pelotas 🎯 ¡Kura te aplaude!</p>
         <p id="labWin" class="lab-win" hidden>🎉 ¡Llegaste a la pelota! <b id="labWinT"></b></p>
       </div>
+      <div class="mapa-card wide reveal">
+        <h3>🎈 Kura Pop! — atrapa las pelotas</h3>
+        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">¡Toca las pelotitas antes de que caigan a la piscina! 20 segundos en pantalla dividida igual. En PC clic, en el celular toca.</p>
+        <canvas id="pop" width="680" height="360"></canvas>
+        <div class="pop-hud">
+          <span id="popScore">⭐ 0</span>
+          <span id="popTime">🕑 20.0s</span>
+          <button class="btn" id="popStart" style="padding:.5rem 1.3rem;font-size:.95rem">▶ ¡A jugar!</button>
+        </div>
+        <p id="popMsg" class="pop-msg" hidden></p>
+      </div>
     </div>
   </div>
 </section>
@@ -535,7 +555,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
       <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener">Instagram @kurapark_</a>
     </div>
   </div>
-  <div class="container" style="margin-top:1.5rem;opacity:.55;font-size:.78rem">© 2026 KURAPARK · Curacaví, Chile</div>
+  <div class="container" style="margin-top:1.5rem;opacity:.55;font-size:.78rem">© 2026 KURAPARK · Curacaví, Chile<br><span class="firma">Sitio web por <b>Safary16</b> 💜</span></div>
 </footer>
 
 <!-- Barra fija mobile -->
@@ -725,6 +745,135 @@ cv.addEventListener('touchend',e=>{
 document.getElementById('labNew').addEventListener('click',gen);
 gen();
 })();
+
+
+// ===== KURA POP! 🎈 atrapa las pelotas =====
+(()=>{
+const cv=document.getElementById('pop'); if(!cv) return;
+const cx=cv.getContext('2d');
+const W=cv.width, H=cv.height;
+let balls=[], burst=[], score=0, timeLeft=0, running=false, raf=null, last=0;
+const scoreEl=document.getElementById('popScore'), timeEl=document.getElementById('popTime'),
+      btn=document.getElementById('popStart'), msgEl=document.getElementById('popMsg');
+const COLS=['#FF59B4','#FFC93C','#38B6FF','#3DDC84','#7B2FF2','#FF7EC4'];
+let AC=null;
+function ac(){ if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return AC; }
+function tone(f,d,type,v,when){
+  const a=ac(); if(!a||a.state!=='running') return;
+  const o=a.createOscillator(), g=a.createGain();
+  o.type=type||'sine'; o.frequency.value=f;
+  g.gain.setValueAtTime(v||.1, a.currentTime+(when||0));
+  g.gain.exponentialRampToValueAtTime(.0001, a.currentTime+(when||0)+d);
+  o.connect(g).connect(a.destination); o.start(a.currentTime+(when||0)); o.stop(a.currentTime+(when||0)+d+.02);
+}
+const sfxPop=()=>{ tone(520,.07,'square',.09); tone(940,.1,'sine',.1,.04); };
+const sfxFan=()=>{ [523,659,784,1047].forEach((f,i)=>tone(f,.16,'triangle',.12,i*.09)); };
+function reset(){
+  balls=[]; burst=[]; score=0; timeLeft=20; msgEl.hidden=true;
+  scoreEl.textContent='⭐ 0'; timeEl.textContent='🕑 20.0s'; btn.textContent='▶ ¡A jugar!';
+}
+function spawn(){
+  balls.push({x:28+Math.random()*(W-56), y:-26, r:13+Math.random()*9,
+    vy:1.1+Math.random()*1.7, c:COLS[(Math.random()*COLS.length)|0], wob:Math.random()*6.28, face:Math.random()<.45});
+}
+function addBurst(x,y,c){
+  for(let i=0;i<9;i++){
+    const a=Math.random()*6.28, v=2+Math.random()*3.2;
+    burst.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-1.6,life:1,r:2.5+Math.random()*3.5,c});
+  }
+}
+function draw(){
+  cx.clearRect(0,0,W,H);
+  const g=cx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#F7EFFF'); g.addColorStop(1,'#EDE0FF');
+  cx.fillStyle=g; cx.fillRect(0,0,W,H);
+  // zona piscina abajo
+  cx.fillStyle='rgba(255,89,180,.13)'; cx.fillRect(0,H-34,W,34);
+  cx.fillStyle='#FF59B4'; cx.font='12px sans-serif'; cx.textAlign='center'; cx.textBaseline='middle';
+  cx.fillText('🎯 ¡no dejes que caigan a la piscina!', W/2, H-17);
+  // pelotas con brillo y carita
+  const now=performance.now();
+  balls.forEach(b=>{
+    const dy=Math.sin(now/190+b.wob)*2.5;
+    cx.beginPath(); cx.arc(b.x,b.y+dy,b.r,0,7);
+    const gr=cx.createRadialGradient(b.x-b.r*.32,b.y-b.r*.32+dy,b.r*.12,b.x,b.y+dy,b.r);
+    gr.addColorStop(0,'#fff'); gr.addColorStop(.34,b.c); gr.addColorStop(1,'rgba(0,0,0,.25)');
+    cx.fillStyle=gr; cx.fill();
+    if(b.face){
+      cx.fillStyle='#fff';
+      cx.beginPath(); cx.arc(b.x-b.r*.3,b.y+dy-b.r*.15,b.r*.16,0,7); cx.fill();
+      cx.beginPath(); cx.arc(b.x+b.r*.3,b.y+dy-b.r*.15,b.r*.16,0,7); cx.fill();
+      cx.fillStyle='#241435';
+      cx.beginPath(); cx.arc(b.x-b.r*.24,b.y+dy-b.r*.2,b.r*.07,0,7); cx.fill();
+      cx.beginPath(); cx.arc(b.x+b.r*.36,b.y+dy-b.r*.2,b.r*.07,0,7); cx.fill();
+    }
+  });
+  // explosiones
+  burst.forEach(p=>{
+    cx.globalAlpha=Math.max(0,p.life); cx.beginPath(); cx.arc(p.x,p.y,p.r,0,7); cx.fillStyle=p.c; cx.fill();
+  });
+  cx.globalAlpha=1;
+}
+function loop(now){
+  if(!running) return;
+  const dt=Math.min(.05,(now-last)/1000)||.016; last=now;
+  if(Math.random()<dt*2.1) spawn();
+  for(let i=balls.length-1;i>=0;i--){ const b=balls[i];
+    b.y+=b.vy*60*dt; b.x+=Math.sin(now/320+b.wob)*.35;
+    if(b.y-26>H) balls.splice(i,1);
+  }
+  for(let i=burst.length-1;i>=0;i--){ const p=burst[i];
+    p.life-=dt*3; p.x+=p.vx*dt*60; p.y+=p.vy*dt*60; p.vy+=.28*dt*60;
+    if(p.life<=0) burst.splice(i,1);
+  }
+  draw();
+  timeLeft-=dt;
+  timeEl.textContent='🕑 '+Math.max(0,timeLeft).toFixed(1)+'s';
+  if(timeLeft<=0){ end(); return; }
+  raf=requestAnimationFrame(loop);
+}
+function end(){
+  running=false;
+  msgEl.hidden=false;
+  msgEl.innerHTML='🎉 <b>'+score+' pelotas atrapadas!</b> '+
+    (score>=25?'¡Increíble, eres un Kura Pro! 🏆':score>=12?'¡Muy bien! ⭐⭐':'¡Buen intento! 💪')+
+    (score>=20?' ¡Confeti para ti! 🎊':'');
+  btn.textContent='Otra vez 🔄';
+  if(score>=20){
+    sfxFan();
+    const cols=['#7B2FF2','#FF59B4','#FFC93C','#3DDC84','#38B6FF'];
+    const wrap=document.createElement('div'); wrap.className='confetti';
+    for(let i=0;i<30;i++){const c=document.createElement('i'); c.style.cssText='left:'+(Math.random()*100)+'%;animation-delay:'+(Math.random()*.5)+'s;background:'+cols[i%5]; wrap.appendChild(c);}
+    document.body.appendChild(wrap); setTimeout(()=>wrap.remove(),2000);
+    if(navigator.vibrate) navigator.vibrate([50,40,90]);
+  }
+}
+function onPointer(e){
+  if(!running) return;
+  const rect=cv.getBoundingClientRect();
+  const x=(e.clientX-rect.left)*(W/rect.width), y=(e.clientY-rect.top)*(H/rect.height);
+  const now=performance.now();
+  for(let i=balls.length-1;i>=0;i--){
+    const b=balls[i], dy=Math.sin(now/190+b.wob)*2.5;
+    const dx=x-b.x, dyy=y-(b.y+dy);
+    if(dx*dx+dyy*dyy < (b.r+9)*(b.r+9)){
+      balls.splice(i,1); score++;
+      scoreEl.textContent='⭐ '+score; sfxPop();
+      if(navigator.vibrate) navigator.vibrate(12);
+      addBurst(b.x,b.y,b.c); return;
+    }
+  }
+}
+btn.addEventListener('click',()=>{
+  const a=ac(); if(a&&a.state==='suspended') a.resume();
+  reset(); running=true; last=performance.now();
+  for(let i=0;i<4;i++) spawn();
+  raf=requestAnimationFrame(loop);
+});
+cv.addEventListener('pointerdown', onPointer);
+reset();
+})();
+
 
 // ===== RELOJ KURA + BANNER HOY =====
 (function(){
