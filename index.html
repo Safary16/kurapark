@@ -107,6 +107,19 @@ section{padding:4.2rem 0}
 @media(max-width:760px){.gal-a{grid-row:auto;aspect-ratio:1/1}}
 .gal-caption{text-align:center;margin-top:1.4rem;color:#6E5A8C;font-weight:700}
 
+/* MAPA & JUEGO */
+.mapa{background:#fff}
+.mapa-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.6rem}
+@media(max-width:860px){.mapa-grid{grid-template-columns:1fr}}
+.mapa-card{background:var(--morado-soft);border-radius:var(--radius);padding:1.6rem}
+.mapa-card h3{font-size:1.15rem;margin-bottom:.7rem}
+.mapa-card h3 em{font-size:.72rem;color:#6E5A8C;font-weight:700}
+.mapa-svg{width:100%}
+.mapa-nota{font-size:.8rem;color:#6E5A8C;margin-top:.6rem}
+.lab-hud{display:flex;gap:1rem;align-items:center;margin-top:.9rem;font-weight:800;font-size:.95rem}
+.lab-hud #labNew{margin-left:auto}
+.lab-win{margin-top:.7rem;background:#DFF7EA;border-radius:14px;padding:.6rem 1rem;color:#0B7A3E;font-weight:800}
+
 /* INFO */
 .info{background:var(--morado-soft)}
 .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1.3rem}
@@ -154,6 +167,7 @@ footer{background:#1A0E2E;color:#C9B8E8;padding:2.4rem 0;font-size:.9rem}
       <a href="#zonas">Zonas de juego</a>
       <a href="#fiestas">Cumpleaños y cursos</a>
       <a href="#galeria">Galería</a>
+      <a href="#mapa">Mapa y juego</a>
       <a href="#visita">Visítanos</a>
       <a class="btn btn-wa" href="https://wa.me/56953700192?text=Hola%20KURAPARK!%20Quiero%20consultar%20por%20entradas%20%2F%20cumplea%C3%B1os" target="_blank" rel="noopener">Escríbenos</a>
     </div>
@@ -254,6 +268,57 @@ footer{background:#1A0E2E;color:#C9B8E8;padding:2.4rem 0;font-size:.9rem}
   </div>
 </section>
 
+<section class="mapa" id="mapa">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">MAPA & JUEGO</span>
+      <h2>Explora el parque antes de venir</h2>
+      <p>Mira el plano para planear tu estrategia… y calienta motores con nuestro laberinto.</p>
+    </div>
+    <div class="mapa-grid">
+      <div class="mapa-card reveal">
+        <h3>🗺️ Plano del parque <em>(ilustrativo)</em></h3>
+        <svg viewBox="0 0 420 320" class="mapa-svg" role="img" aria-label="Plano ilustrativo del parque KURAPARK">
+          <!-- piso -->
+          <rect x="60" y="20" width="340" height="280" rx="18" fill="#F3EBFF" stroke="#7B2FF2" stroke-width="3"/>
+          <!-- tubos/caminos -->
+          <path d="M 95 300 L 95 250 L 170 250 L 170 200 L 240 200 L 240 150" fill="none" stroke="#FF59B4" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+          <path d="M 170 250 L 170 120 L 110 120" fill="none" stroke="#3DDC84" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+          <path d="M 240 200 L 310 200 L 310 90" fill="none" stroke="#38B6FF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+          <path d="M 240 150 L 240 70 L 340 70" fill="none" stroke="#FFC93C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+          <!-- zonas -->
+          <g font-family="Nunito" font-weight="800" text-anchor="middle">
+            <circle cx="110" cy="120" r="30" fill="#3DDC84"/><text x="110" y="115" font-size="24">🛝</text><text x="110" y="136" font-size="10" fill="#fff">TOBOGANES</text>
+            <circle cx="240" cy="150" r="34" fill="#FF59B4"/><text x="240" y="146" font-size="26">🎈</text><text x="240" y="170" font-size="10" fill="#fff">PELOTAS</text>
+            <circle cx="310" cy="90" r="30" fill="#38B6FF"/><text x="310" y="86" font-size="22">🏀</text><text x="310" y="106" font-size="9" fill="#fff">TRAMPOLÍN</text>
+            <circle cx="340" cy="70" r="26" fill="#FFC93C"/><text x="340" y="66" font-size="20">🧩</text><text x="340" y="84" font-size="8" fill="#241435">SENSORIAL</text>
+            <circle cx="95" cy="250" r="26" fill="#7B2FF2"/><text x="95" y="246" font-size="20">☕</text><text x="95" y="266" font-size="9" fill="#fff">CAFETERÍA</text>
+            <circle cx="170" cy="200" r="22" fill="#9A4BFF"/><text x="170" y="207" font-size="16">🚻</text>
+          </g>
+          <!-- entrada + estacionamiento -->
+          <rect x="150" y="296" width="80" height="24" rx="10" fill="#241435"/>
+          <text x="190" y="313" font-size="11" fill="#fff" text-anchor="middle" font-weight="800" font-family="Nunito">ENTRADA ↑</text>
+          <rect x="8" y="60" width="44" height="180" rx="12" fill="#EDE4FF" stroke="#7B2FF2" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="30" y="150" font-size="20" text-anchor="middle" transform="rotate(-90 30 150)" font-family="Nunito" font-weight="800" fill="#7B2FF2">🅿️ ESTACIONAMIENTO</text>
+          <text x="310" y="285" font-size="10" fill="#6E5A8C" font-family="Nunito" font-weight="700" text-anchor="middle">Baños universales ♿ cerca de la cafetería</text>
+        </svg>
+        <p class="mapa-nota">⚠️ Plano orientativo de orientación — la distribución real puede variar. ¡Ven a descubrirla!</p>
+      </div>
+      <div class="mapa-card reveal">
+        <h3>🎮 Laberinto Kura</h3>
+        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">Guía la pelota Kura 🟣 hasta la piscina de pelotas. Flechas en PC, desliza el dedo en el celular.</p>
+        <canvas id="lab" width="360" height="360" style="width:100%;max-width:360px;border-radius:20px;box-shadow:var(--sombra);touch-action:none;background:#F3EBFF"></canvas>
+        <div class="lab-hud">
+          <span id="labTimer">⏱ 0.0s</span>
+          <span id="labBest">🏆 —</span>
+          <button class="btn" id="labNew" style="padding:.4rem 1.1rem;font-size:.9rem">Nuevo 🔄</button>
+        </div>
+        <p id="labWin" class="lab-win" hidden>🎉 ¡Llegaste a la pelota! <b id="labWinT"></b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="info" id="visita">
   <div class="container">
     <div class="sec-head reveal">
@@ -328,6 +393,86 @@ footer{background:#1A0E2E;color:#C9B8E8;padding:2.4rem 0;font-size:.9rem}
 <script>
 const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && (e.target.classList.add('in'), io.unobserve(e.target))), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ===== LABERINTO KURA =====
+(()=>{
+const cv = document.getElementById('lab'); if(!cv) return;
+const cx = cv.getContext('2d');
+const N = 13, S = cv.width / N;
+let grid, px, py, started, t0, won, best = +localStorage.getItem('kura_best') || 0;
+const timer = document.getElementById('labTimer'), bestEl = document.getElementById('labBest'), winEl = document.getElementById('labWin'), winT = document.getElementById('labWinT');
+const showBest = () => bestEl.textContent = '🏆 ' + (best ? best.toFixed(1)+'s' : '—');
+showBest();
+function gen(){
+  grid = Array.from({length:N},()=>Array.from({length:N},()=>({w:[1,1,1,1],v:0})));
+  const st=[[0,0]]; grid[0][0].v=1;
+  while(st.length){
+    const [x,y]=st[st.length-1];
+    const nb=[[1,0,0],[ -1,0,2],[0,1,1],[0,-1,3]].map(([dx,dy,w])=>[x+dx,y+dy,w]).filter(([nx,ny,w])=>nx>=0&&ny>=0&&nx<N&&ny<N&&!grid[ny][nx].v);
+    if(!nb.length){st.pop();continue}
+    const [nx,ny,w]=nb[Math.random()*nb.length|0];
+    const opp=[2,3,0,1][w];
+    grid[y][x].w[w]=0; grid[ny][nx].w[opp]=0; grid[ny][nx].v=1; st.push([nx,ny]);
+  }
+  px=0; py=0; started=false; won=false; winEl.hidden=true; timer.textContent='⏱ 0.0s';
+  draw();
+}
+function draw(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  // meta: piscina de pelotas
+  const gx=(N-0.5)*S, gy=(N-0.5)*S;
+  cx.save(); cx.beginPath(); cx.arc(gx,gy,S*0.42,0,7); cx.fillStyle='#FF59B4'; cx.fill();
+  const dots=['#FFC93C','#38B6FF','#3DDC84','#fff','#7B2FF2'];
+  for(let i=0;i<7;i++){ cx.beginPath(); cx.arc(gx-8+(i%3)*8, gy-6+((i/3)|0)*7, 3.2, 0, 7); cx.fillStyle=dots[i%5]; cx.fill(); }
+  cx.restore();
+  // paredes estilo tubo
+  cx.beginPath();
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){
+    const g=grid[y][x], X=x*S, Y=y*S;
+    if(g.w[0]){cx.moveTo(X+S,Y);cx.lineTo(X+S,Y+S)}
+    if(g.w[1]){cx.moveTo(X,Y+S);cx.lineTo(X+S,Y+S)}
+    if(g.w[3]){cx.moveTo(X,Y);cx.lineTo(X+S,Y)}
+    if(g.w[2]){cx.moveTo(X,Y);cx.lineTo(X,Y+S)}
+  }
+  cx.strokeStyle='#7B2FF2'; cx.lineWidth=5; cx.lineCap='round'; cx.lineJoin='round'; cx.stroke();
+  // pelota Kura
+  const cxp=(px+0.5)*S, cyp=(py+0.5)*S, r=S*0.30;
+  const gr=cx.createRadialGradient(cxp-r*0.35,cyp-r*0.35,r*0.15,cxp,cyp,r);
+  gr.addColorStop(0,'#C9A0FF'); gr.addColorStop(1,'#5B1DB8');
+  cx.beginPath(); cx.arc(cxp,cyp,r,0,7); cx.fillStyle=gr; cx.fill();
+  cx.beginPath(); cx.arc(cxp-r*0.32,cyp-r*0.38,r*0.16,0,7); cx.fillStyle='rgba(255,255,255,.75)'; cx.fill();
+}
+function move(dx,dy){
+  if(won) return;
+  const w=grid[py][px].w[dx>0?0:dx<0?2:dy>0?1:3];
+  if(w) return;
+  px+=dx; py+=dy;
+  if(!started){started=true;t0=performance.now()}
+  draw();
+  if(px===N-1&&py===N-1){
+    won=true;
+    const t=(performance.now()-t0)/1000;
+    timer.textContent='⏱ '+t.toFixed(1)+'s';
+    winT.textContent='Tu tiempo: '+t.toFixed(1)+'s'+(best&&t<best?' — ¡NUEVO RÉCORD!':'');
+    winEl.hidden=false;
+    if(!best||t<best){best=t;localStorage.setItem('kura_best',best);showBest()}
+  }
+}
+document.addEventListener('keydown',e=>{
+  const k={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[e.key];
+  if(k){e.preventDefault();move(k[0],k[1])}
+});
+let ts=null;
+cv.addEventListener('touchstart',e=>{ts=[e.touches[0].clientX,e.touches[0].clientY]},{passive:true});
+cv.addEventListener('touchend',e=>{
+  if(!ts)return;
+  const dx=e.changedTouches[0].clientX-ts[0], dy=e.changedTouches[0].clientY-ts[1];
+  if(Math.hypot(dx,dy)>18){ Math.abs(dx)>Math.abs(dy)?move(dx>0?1:-1,0):move(0,dy>0?1:-1) }
+  ts=null;
+},{passive:true});
+document.getElementById('labNew').addEventListener('click',gen);
+gen();
+})();
 </script>
 </body>
 </html>
