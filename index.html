@@ -264,6 +264,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .faq summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--morado)}
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin-top:.6rem;color:#4d3b6b}
+.cta-mid{background:linear-gradient(90deg,var(--morado),#9A4BFF);color:#fff;padding:2.6rem 0}
+.cta-mid-in{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap}
+.cta-mid h3{font-size:clamp(1.3rem,3vw,1.8rem);font-family:'Baloo 2',system-ui,sans-serif}
+.cta-mid p{margin:.3rem 0 0;opacity:.92}
+.arcade{background:var(--morado-soft)}
+.arcade-grid{display:grid;gap:1.4rem}
+.arcade-grid .mapa-card{background:#fff}
 </style>
 </head>
 <body>
@@ -276,12 +283,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     <a href="#" class="logo"><img src="img/logo.png" alt="" width="34" height="34"> KURAPARK</a>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
     <div class="nav-links" id="menu">
-      <a href="#zonas">Zonas de juego</a>
-      <a href="#fiestas">Cumpleaños y cursos</a>
-      <a href="#comunidad">Comunidad</a>
-      <a href="#faq">Preguntas</a>
-      <a href="#mapa">Mapa y juego</a>
+      <a href="#zonas">Zonas</a>
       <a href="#visita">Visítanos</a>
+      <a href="#fiestas">Cumpleaños</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#arcade">Jugar 🎮</a>
       <a class="btn btn-wa" href="https://wa.me/56953700192?text=Hola%20KURAPARK!%20Quiero%20consultar%20por%20entradas%20%2F%20cumplea%C3%B1os" target="_blank" rel="noopener">Escríbenos</a>
     </div>
   </div>
@@ -332,140 +338,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     </div>
   </div>
 </section>
-
-<section class="fiestas" id="fiestas">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="tag">CELEBRA CON NOSOTROS</span>
-      <h2>Cumpleaños y paseos que no se olvidan</h2>
-      <p>Tú celebras, nosotros nos encargamos de todo lo demás.</p>
-    </div>
-    <div class="fiestas-grid">
-      <div class="fiesta-card reveal">
-        <img class="foto" src="img/story-cumple.jpg" alt="Niña sonriendo en el área de juegos de KURAPARK, celebra tu cumpleaños" loading="lazy" style="object-position:50% 25%">
-        <h3>🎂 Cumpleaños</h3>
-        <p>Un espacio ideal para los más pequeños: juegos, comida y cero estrés para ti.</p>
-        <ul>
-          <li>Zonas reservadas para tu celebración</li>
-          <li>Acceso ilimitado a las zonas de juego</li>
-          <li>Opciones de menú y coffee break</li>
-          <li>Amplio estacionamiento para las familias invitadas</li>
-        </ul>
-        <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Quiero%20cotizar%20un%20cumplea%C3%B1os%20en%20KURAPARK%20%F0%9F%8E%82" target="_blank" rel="noopener">Cotiza tu cumpleaños</a>
-      </div>
-      <div class="fiesta-card reveal">
-        <img class="foto" src="img/hero.jpg" alt="Paseos de curso y fin de año en KURAPARK" loading="lazy">
-        <h3>🎒 Paseos de curso y fin de año</h3>
-        <p>Despide el año a pura entretención: colegios y jardines ya están agendando, ¡y los valores para cursos son súper convenientes!</p>
-        <ul>
-          <li>Para todos los colegios y jardines</li>
-          <li>Supervisión y seguridad durante toda la visita</li>
-          <li>Fechas de noviembre y diciembre con cupos</li>
-          <li>Cotización rápida por WhatsApp o DM</li>
-        </ul>
-        <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Somos%20un%20colegio%2Fjard%C3%ADn%20y%20queremos%20cotizar%20un%20paseo%20de%20fin%20de%20a%C3%B1o%20%F0%9F%8E%92" target="_blank" rel="noopener">Cotiza tu paseo de curso</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="comunidad" id="comunidad">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="tag">COMUNIDAD</span>
-      <h2>Más que juegos: charlas, talleres y familia</h2>
-      <p>KURAPARK también es punto de encuentro para las familias de Curacaví.</p>
-    </div>
-    <div class="ev-grid">
-      <article class="ev reveal"><img src="img/evento-sentidos.jpg" alt="Afiche de Criar con Sentidos en KURAPARK" loading="lazy" width="512" height="640"><div><span class="pill">GRATIS</span><h3>Criar con Sentidos</h3><p>Charla para madres, padres y cuidadores: «Ellos juegan, tú descubres cómo acompañarles mejor».</p></div></article>
-      <article class="ev reveal"><img src="img/story-charla.jpg" alt="Charla gratuita Sentidos Divertidos en KURAPARK" loading="lazy" width="360" height="640"><div><span class="pill">GRATIS</span><h3>Sentidos Divertidos</h3><p>Charla gratuita sobre juego y estimulación sensorial, dentro del parque.</p></div></article>
-      <article class="ev reveal"><img src="img/story-costura.jpg" alt="Taller de costura para niñas en KURAPARK" loading="lazy" width="361" height="640"><div><h3>Talleres creativos</h3><p>Talleres como el de costura de Beluam, para que los peques aprendan jugando.</p></div></article>
-    </div>
-    <p class="com-nota">📅 Las fechas de próximas actividades las publicamos en <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener"><b>@kurapark_</b></a></p>
-  </div>
-</section>
-
-<section class="mapa" id="mapa">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="tag">MAPA & JUEGO</span>
-      <h2>Explora el parque antes de venir</h2>
-      <p>Mira el plano para planear tu estrategia… y calienta motores con nuestro laberinto.</p>
-    </div>
-    <div class="mapa-grid">
-      <div class="mapa-card reveal">
-        <h3>🗺️ Plano del parque <em>(ilustrativo)</em></h3>
-        <svg viewBox="0 0 440 340" class="mapa-svg" role="img" aria-label="Plano ilustrativo del parque KURAPARK">
-          <rect x="70" y="14" width="360" height="292" rx="18" fill="#F3EBFF" stroke="#7B2FF2" stroke-width="3"/>
-          <g fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
-            <path d="M 200 310 L 200 268 L 115 268" stroke="#FF59B4"/>
-            <path d="M 200 268 L 200 215 L 262 215 L 262 150" stroke="#FF59B4"/>
-            <path d="M 262 150 L 262 108 L 130 108" stroke="#3DDC84"/>
-            <path d="M 262 215 L 365 215" stroke="#38B6FF"/>
-            <path d="M 262 150 L 335 150 L 335 82 L 375 82" stroke="#FFC93C"/>
-          </g>
-          <g font-family="Nunito,system-ui,sans-serif" font-weight="800" text-anchor="middle">
-            <circle cx="130" cy="108" r="28" fill="#3DDC84"/><text x="130" y="118" font-size="28">🛝</text>
-            <circle cx="262" cy="150" r="34" fill="#FF59B4"/><text x="262" y="161" font-size="32">🎈</text>
-            <circle cx="365" cy="215" r="28" fill="#38B6FF"/><text x="365" y="225" font-size="26">🏀</text>
-            <circle cx="375" cy="82" r="26" fill="#FFC93C"/><text x="375" y="92" font-size="24">🧩</text>
-            <circle cx="115" cy="268" r="26" fill="#7B2FF2"/><text x="115" y="278" font-size="24">☕</text>
-            <circle cx="200" cy="215" r="20" fill="#9A4BFF"/><text x="200" y="222" font-size="18">♿</text>
-            <g font-size="11" fill="#241435" stroke="#F3EBFF" stroke-width="3" paint-order="stroke">
-              <text x="130" y="152">TOBOGANES</text>
-              <text x="262" y="200">PELOTAS</text>
-              <text x="365" y="257">TRAMPOLÍN</text>
-              <text x="375" y="124">SENSORIAL</text>
-              <text x="115" y="307">CAFETERÍA</text>
-              <text x="200" y="248" font-size="10">BAÑOS</text>
-            </g>
-            <rect x="150" y="312" width="100" height="24" rx="12" fill="#241435"/>
-            <text x="200" y="328" font-size="12" fill="#fff">↑ ENTRADA</text>
-            <rect x="6" y="40" width="50" height="230" rx="12" fill="#EDE4FF" stroke="#7B2FF2" stroke-width="2" stroke-dasharray="6 4"/>
-            <text x="31" y="68" font-size="22">🅿️</text>
-            <text x="31" y="160" font-size="14" fill="#7B2FF2" transform="rotate(-90 31 160)" letter-spacing="1">ESTACIONAMIENTO</text>
-          </g>
-        </svg>
-        <p class="mapa-nota">⚠️ Plano orientativo de orientación — la distribución real puede variar. ¡Ven a descubrirla!</p>
-      </div>
-      <div class="mapa-card reveal">
-        <h3>🎮 Laberinto Kura</h3>
-        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">Guía la pelota Kura 🟣 hasta la piscina de pelotas. Flechas en PC, desliza el dedo en el celular.</p>
-        <canvas id="lab" width="360" height="360" style="width:100%;max-width:360px;border-radius:20px;box-shadow:var(--sombra);touch-action:none;background:#F3EBFF"></canvas>
-        <div class="lab-hud">
-          <span id="labTimer">⏱ 0.0s</span>
-          <span id="labStars">⭐ 0/10</span>
-          <span id="labBest">🏆 —</span>
-          <button class="btn" id="labNew" style="padding:.4rem 1.1rem;font-size:.9rem">Nuevo 🔄</button>
-        </div>
-        <p class="lab-hint">⭐ Junta las estrellas y llega a la piscina de pelotas 🎯 ¡Kura te aplaude!</p>
-        <p id="labWin" class="lab-win" hidden>🎉 ¡Llegaste a la pelota! <b id="labWinT"></b></p>
-      </div>
-      <div class="mapa-card wide reveal">
-        <h3>🎈 Kura Pop! — atrapa las pelotas</h3>
-        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">¡Toca las pelotitas antes de que caigan a la piscina! 20 segundos en pantalla dividida igual. En PC clic, en el celular toca.</p>
-        <canvas id="pop" width="680" height="360"></canvas>
-        <div class="pop-hud">
-          <span id="popScore">⭐ 0</span>
-          <span id="popTime">🕑 20.0s</span>
-          <button class="btn" id="popStart" style="padding:.5rem 1.3rem;font-size:.95rem">▶ ¡A jugar!</button>
-        </div>
-        <p id="popMsg" class="pop-msg" hidden></p>
-      </div>
-      <div class="mapa-card wide reveal">
-        <h3>🏃 Kura Runner — ¡no pares!</h3>
-        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">Kura corre por el parque y tú lo ayudas a saltar los obstáculos. Un toque para saltar — la velocidad sube, ¡aguanta lo que más puedas!</p>
-        <canvas id="runner" width="680" height="360"></canvas>
-        <div class="pop-hud">
-          <span id="runScore">🏁 0</span>
-          <span id="runBest">🏆 —</span>
-          <span style="font-size:.8rem;color:#6E5A8C">Espacio / toque para saltar</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="info" id="visita">
   <div class="container">
     <div class="sec-head reveal">
@@ -507,7 +379,87 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     </div>
   </div>
 </section>
-
+<section class="mapa" id="mapa">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">MAPA DEL PARQUE</span>
+      <h2>Así se reparte la diversión</h2>
+      <p>Plano orientativo para planear tu visita — la distribución real te espera en el parque.</p>
+    </div>
+    <div class="mapa-grid">
+      <div class="mapa-card reveal">
+        <h3>🗺️ Plano del parque <em>(ilustrativo)</em></h3>
+        <svg viewBox="0 0 440 340" class="mapa-svg" role="img" aria-label="Plano ilustrativo del parque KURAPARK">
+          <rect x="70" y="14" width="360" height="292" rx="18" fill="#F3EBFF" stroke="#7B2FF2" stroke-width="3"/>
+          <g fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+            <path d="M 200 310 L 200 268 L 115 268" stroke="#FF59B4"/>
+            <path d="M 200 268 L 200 215 L 262 215 L 262 150" stroke="#FF59B4"/>
+            <path d="M 262 150 L 262 108 L 130 108" stroke="#3DDC84"/>
+            <path d="M 262 215 L 365 215" stroke="#38B6FF"/>
+            <path d="M 262 150 L 335 150 L 335 82 L 375 82" stroke="#FFC93C"/>
+          </g>
+          <g font-family="Nunito,system-ui,sans-serif" font-weight="800" text-anchor="middle">
+            <circle cx="130" cy="108" r="28" fill="#3DDC84"/><text x="130" y="118" font-size="28">🛝</text>
+            <circle cx="262" cy="150" r="34" fill="#FF59B4"/><text x="262" y="161" font-size="32">🎈</text>
+            <circle cx="365" cy="215" r="28" fill="#38B6FF"/><text x="365" y="225" font-size="26">🏀</text>
+            <circle cx="375" cy="82" r="26" fill="#FFC93C"/><text x="375" y="92" font-size="24">🧩</text>
+            <circle cx="115" cy="268" r="26" fill="#7B2FF2"/><text x="115" y="278" font-size="24">☕</text>
+            <circle cx="200" cy="215" r="20" fill="#9A4BFF"/><text x="200" y="222" font-size="18">♿</text>
+            <g font-size="11" fill="#241435" stroke="#F3EBFF" stroke-width="3" paint-order="stroke">
+              <text x="130" y="152">TOBOGANES</text>
+              <text x="262" y="200">PELOTAS</text>
+              <text x="365" y="257">TRAMPOLÍN</text>
+              <text x="375" y="124">SENSORIAL</text>
+              <text x="115" y="307">CAFETERÍA</text>
+              <text x="200" y="248" font-size="10">BAÑOS</text>
+            </g>
+            <rect x="150" y="312" width="100" height="24" rx="12" fill="#241435"/>
+            <text x="200" y="328" font-size="12" fill="#fff">↑ ENTRADA</text>
+            <rect x="6" y="40" width="50" height="230" rx="12" fill="#EDE4FF" stroke="#7B2FF2" stroke-width="2" stroke-dasharray="6 4"/>
+            <text x="31" y="68" font-size="22">🅿️</text>
+            <text x="31" y="160" font-size="14" fill="#7B2FF2" transform="rotate(-90 31 160)" letter-spacing="1">ESTACIONAMIENTO</text>
+          </g>
+        </svg>
+        <p class="mapa-nota">⚠️ Plano orientativo de orientación — la distribución real puede variar. ¡Ven a descubrirla!</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="fiestas" id="fiestas">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">CELEBRA CON NOSOTROS</span>
+      <h2>Cumpleaños y paseos que no se olvidan</h2>
+      <p>Tú celebras, nosotros nos encargamos de todo lo demás.</p>
+    </div>
+    <div class="fiestas-grid">
+      <div class="fiesta-card reveal">
+        <img class="foto" src="img/story-cumple.jpg" alt="Niña sonriendo en el área de juegos de KURAPARK, celebra tu cumpleaños" loading="lazy" style="object-position:50% 25%">
+        <h3>🎂 Cumpleaños</h3>
+        <p>Un espacio ideal para los más pequeños: juegos, comida y cero estrés para ti.</p>
+        <ul>
+          <li>Zonas reservadas para tu celebración</li>
+          <li>Acceso ilimitado a las zonas de juego</li>
+          <li>Opciones de menú y coffee break</li>
+          <li>Amplio estacionamiento para las familias invitadas</li>
+        </ul>
+        <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Quiero%20cotizar%20un%20cumplea%C3%B1os%20en%20KURAPARK%20%F0%9F%8E%82" target="_blank" rel="noopener">Cotiza tu cumpleaños</a>
+      </div>
+      <div class="fiesta-card reveal">
+        <img class="foto" src="img/hero.jpg" alt="Paseos de curso y fin de año en KURAPARK" loading="lazy">
+        <h3>🎒 Paseos de curso y fin de año</h3>
+        <p>Despide el año a pura entretención: colegios y jardines ya están agendando, ¡y los valores para cursos son súper convenientes!</p>
+        <ul>
+          <li>Para todos los colegios y jardines</li>
+          <li>Supervisión y seguridad durante toda la visita</li>
+          <li>Fechas de noviembre y diciembre con cupos</li>
+          <li>Cotización rápida por WhatsApp o DM</li>
+        </ul>
+        <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Somos%20un%20colegio%2Fjard%C3%ADn%20y%20queremos%20cotizar%20un%20paseo%20de%20fin%20de%20a%C3%B1o%20%F0%9F%8E%92" target="_blank" rel="noopener">Cotiza tu paseo de curso</a>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="testimonios" id="testimonios">
   <div class="container">
     <div class="sec-head reveal">
@@ -525,7 +477,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     </div>
   </div>
 </section>
-
 <section class="faq" id="faq">
   <div class="container">
     <div class="sec-head reveal">
@@ -543,7 +494,75 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     </div>
   </div>
 </section>
-
+<section class="cta-mid" id="reserva">
+  <div class="container cta-mid-in reveal">
+    <div>
+      <h3>¿Listo para venir a jugar? 💬</h3>
+      <p>Escríbenos y te contestamos con horario, precios y disponibilidad al toque.</p>
+    </div>
+    <a class="btn btn-wa" href="https://wa.me/56953700192?text=Hola%20KURAPARK!%20Quiero%20consultar%20precios%20y%20disponibilidad" target="_blank" rel="noopener">💬 Consultar por WhatsApp</a>
+  </div>
+</section>
+<section class="arcade" id="arcade">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">ZONA ARCADE</span>
+      <h2>Juega Kura — en el móvil o el PC</h2>
+      <p>¿Esperando la respuesta del WhatsApp o entreteniendo al peque? Pasa el rato con Kura 🟣</p>
+    </div>
+    <div class="arcade-grid">
+      <div class="mapa-card reveal">
+        <h3>🎮 Laberinto Kura</h3>
+        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">Guía la pelota Kura 🟣 hasta la piscina de pelotas. Flechas en PC, desliza el dedo en el celular.</p>
+        <canvas id="lab" width="360" height="360" style="width:100%;max-width:360px;border-radius:20px;box-shadow:var(--sombra);touch-action:none;background:#F3EBFF"></canvas>
+        <div class="lab-hud">
+          <span id="labTimer">⏱ 0.0s</span>
+          <span id="labStars">⭐ 0/10</span>
+          <span id="labBest">🏆 —</span>
+          <button class="btn" id="labNew" style="padding:.4rem 1.1rem;font-size:.9rem">Nuevo 🔄</button>
+        </div>
+        <p class="lab-hint">⭐ Junta las estrellas y llega a la piscina de pelotas 🎯 ¡Kura te aplaude!</p>
+        <p id="labWin" class="lab-win" hidden>🎉 ¡Llegaste a la pelota! <b id="labWinT"></b></p>
+      </div>
+      <div class="mapa-card wide reveal">
+        <h3>🎈 Kura Pop! — atrapa las pelotas</h3>
+        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">¡Toca las pelotitas antes de que caigan a la piscina! 20 segundos en pantalla dividida igual. En PC clic, en el celular toca.</p>
+        <canvas id="pop" width="680" height="360"></canvas>
+        <div class="pop-hud">
+          <span id="popScore">⭐ 0</span>
+          <span id="popTime">🕑 20.0s</span>
+          <button class="btn" id="popStart" style="padding:.5rem 1.3rem;font-size:.95rem">▶ ¡A jugar!</button>
+        </div>
+        <p id="popMsg" class="pop-msg" hidden></p>
+      </div>
+      <div class="mapa-card wide reveal">
+        <h3>🏃 Kura Runner — ¡no pares!</h3>
+        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">Kura corre por el parque y tú lo ayudas a saltar los obstáculos. Un toque para saltar — la velocidad sube, ¡aguanta lo que más puedas!</p>
+        <canvas id="runner" width="680" height="360"></canvas>
+        <div class="pop-hud">
+          <span id="runScore">🏁 0</span>
+          <span id="runBest">🏆 —</span>
+          <span style="font-size:.8rem;color:#6E5A8C">Espacio / toque para saltar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="comunidad" id="comunidad">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">COMUNIDAD</span>
+      <h2>Más que juegos: charlas, talleres y familia</h2>
+      <p>KURAPARK también es punto de encuentro para las familias de Curacaví.</p>
+    </div>
+    <div class="ev-grid">
+      <article class="ev reveal"><img src="img/evento-sentidos.jpg" alt="Afiche de Criar con Sentidos en KURAPARK" loading="lazy" width="512" height="640"><div><span class="pill">GRATIS</span><h3>Criar con Sentidos</h3><p>Charla para madres, padres y cuidadores: «Ellos juegan, tú descubres cómo acompañarles mejor».</p></div></article>
+      <article class="ev reveal"><img src="img/story-charla.jpg" alt="Charla gratuita Sentidos Divertidos en KURAPARK" loading="lazy" width="360" height="640"><div><span class="pill">GRATIS</span><h3>Sentidos Divertidos</h3><p>Charla gratuita sobre juego y estimulación sensorial, dentro del parque.</p></div></article>
+      <article class="ev reveal"><img src="img/story-costura.jpg" alt="Taller de costura para niñas en KURAPARK" loading="lazy" width="361" height="640"><div><h3>Talleres creativos</h3><p>Talleres como el de costura de Beluam, para que los peques aprendan jugando.</p></div></article>
+    </div>
+    <p class="com-nota">📅 Las fechas de próximas actividades las publicamos en <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener"><b>@kurapark_</b></a></p>
+  </div>
+</section>
 <section class="cta">
   <div class="container reveal">
     <h2>¿Lista la próxima visita? Nosotros también te esperamos 🎈</h2>
