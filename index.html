@@ -286,6 +286,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 #lb button{position:absolute;top:-14px;right:-10px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:1.3rem;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 .share-btn{background:#fff;color:var(--ink);box-shadow:none;margin-top:.8rem;border:0;font:inherit;font-weight:800;cursor:pointer}
 .waze{display:inline-block;margin-left:.8rem}
+
+.nav-ig{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:linear-gradient(45deg,#C2185B,#7B2FF2);margin-left:auto;margin-right:.6rem}
+.nav-ig svg{width:22px;height:22px;fill:#fff}
+@media(min-width:761px){.nav-ig{order:3;margin:0 0 0 1rem;width:40px;height:40px}.nav-links{margin-left:auto}}
+.hero-ig{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.1rem;color:var(--ink);font-weight:700;font-size:.95rem}
+.hero-ig svg{width:30px;height:30px;padding:6px;border-radius:9px;background:linear-gradient(45deg,#C2185B,#7B2FF2);fill:#fff;flex-shrink:0}
+.hero-ig b{color:#5B1DB8}
+.hero-ig:hover span{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -296,6 +304,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <nav class="nav">
   <div class="container nav-in">
     <a href="#" class="logo"><img src="img/logo.png" alt="" width="34" height="34"> KURAPARK</a>
+    <a class="nav-ig" href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener" aria-label="Instagram de KURAPARK (@kurapark_)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 2.2c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.7 10.2 2.7 10.6 2.7 12s0 1.8.1 3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.4a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4zm0 6.9a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm5.4-7.1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg></a>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
     <div class="nav-links" id="menu">
       <a href="#zonas">Zonas</a>
@@ -318,6 +327,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <a class="btn" href="#visita">Planifica tu visita</a>
         <a class="btn btn-ghost" href="#fiestas">🎂 Cumpleaños y paseos</a>
       </div>
+      <a class="hero-ig" href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 2.2c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.7 10.2 2.7 10.6 2.7 12s0 1.8.1 3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.4a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4zm0 6.9a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm5.4-7.1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg><span>Síguenos en <b>@kurapark_</b> · 5.000+ familias</span></a>
       <div class="hero-badges">
         <span>🅿️ Amplio estacionamiento</span>
         <span>♿ Baños universales</span>
@@ -380,7 +390,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
       <div class="info-card reveal">
         <h3>💳 Medios de pago</h3>
         <div class="pay-tags"><span>Efectivo</span><span>Débito</span></div>
-        <em>Cotizaciones de eventos por WhatsApp</em>
+        <em>Cotizaciones de eventos por WhatsApp o por <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener">DM en Instagram</a></em>
       </div>
       <div class="info-card reveal">
         <h3>✨ Extras</h3>
