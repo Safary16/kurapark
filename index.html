@@ -24,6 +24,63 @@
 <link rel="apple-touch-icon" href="img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AmusementPark","name":"KURAPARK","description":"Primer parque de juegos indoor de Curacaví: toboganes, piscina de pelotas, trampolín, juegos sensoriales, cafetería de especialidad, cumpleaños y paseos de curso.","url":"https://safary16.github.io/kurapark/","image":"https://safary16.github.io/kurapark/img/og.jpg","telephone":"+56953700192","email":"kuraparkcuracavi@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Ambrosio O'Higgins 1730","addressLocality":"Curacaví","addressRegion":"Región Metropolitana","addressCountry":"CL"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday"],"opens":"15:30","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday","Sunday"],"opens":"15:30","closes":"20:30"}],"paymentAccepted":"Efectivo, Débito","amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Estacionamiento","value":true},{"@type":"LocationFeatureSpecification","name":"Baños universales","value":true},{"@type":"LocationFeatureSpecification","name":"Cafetería de especialidad","value":true}],"sameAs":["https://www.instagram.com/kurapark_/"]}
+// ===== RELOJ KURA + BANNER HOY =====
+(function(){
+  const TZ = 'America/Santiago';
+  const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const ho = d => new Date(d.toLocaleString('en-US',{timeZone:TZ}));
+  function aperturaDia(dow){
+    return (dow===3||dow===4||dow===5||dow===6||dow===0) ? {a:15*60+30, b:(dow===3||dow===4)?20*60:20*60+30} : null;
+  }
+  function proxApertura(){
+    const now = ho(new Date());
+    const min = now.getHours()*60+now.getMinutes();
+    const hoy = aperturaDia(now.getDay());
+    if (hoy && min < hoy.a){ const t=new Date(now); t.setHours(15,30,0,0); return t; }
+    for (let i=1;i<=8;i++){
+      const t = new Date(now); t.setDate(t.getDate()+i);
+      if (aperturaDia(t.getDay())){ t.setHours(15,30,0,0); return t; }
+    }
+    return null;
+  }
+  function fmt(ms){
+    const s = Math.max(0, Math.round(ms/1000));
+    const h = Math.floor(s/3600), m = Math.floor((s%3600)/60), mm = Math.floor(s%60);
+    if (h>0) return h+'h '+m+'min';
+    if (m>0) return m+'min '+mm+'s';
+    return mm+'s';
+  }
+  function tick(){
+    const banner = document.getElementById('bannerHoy'), reloj = document.getElementById('relojKura');
+    if (!banner || !reloj) return;
+    const now = ho(new Date());
+    const min = now.getHours()*60+now.getMinutes();
+    const hoy = aperturaDia(now.getDay());
+    const hh = String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+    if (hoy && min >= hoy.a && min < hoy.b){
+      const falt = (hoy.b-min)*60000;
+      banner.className = 'banner-hoy open';
+      banner.innerHTML = '✅ <b>HOY ESTAMOS ABIERTOS</b> · '+dias[now.getDay()]+' '+hh+' — cerramos en '+fmt(falt);
+      reloj.className = 'reloj-kura open';
+      reloj.innerHTML = '⏰ <b>Abierto ahora</b> · cierra en '+fmt(falt);
+    } else {
+      const prox = proxApertura();
+      let txt = 'Hoy cerrado · nos vemos el miércoles 🎈';
+      if (prox){
+        const hr = String(prox.getHours()).padStart(2,'0')+':'+String(prox.getMinutes()).padStart(2,'0');
+        const falt = prox.getTime()-now.getTime();
+        txt = (prox.getDate()===now.getDate() ? 'Abrimos hoy a las '+hr : 'Abrimos '+dias[prox.getDay()]+' '+hr) + ' (en '+fmt(falt)+')';
+      }
+      banner.className = 'banner-hoy closed';
+      banner.innerHTML = '🌙 <b>HOY CERRADO</b> · '+txt;
+      reloj.className = 'reloj-kura closed';
+      reloj.innerHTML = '⏰ '+txt;
+    }
+  }
+  tick();
+  setInterval(tick, 30000);
+})();
+
 </script>
 
 <style>
@@ -167,6 +224,12 @@ footer{background:#1A0E2E;color:#C9B8E8;padding:2.4rem 0;font-size:.9rem}
 .wa-float:hover{transform:scale(1.08)}
 .wa-float svg{width:30px;height:30px;fill:#fff}
 @media(min-width:761px){.wa-float{display:none}}
+.banner-hoy{background:var(--morado-d);color:#fff;text-align:center;font-weight:800;font-size:.92rem;padding:.55rem 1rem;font-family:'Nunito',sans-serif;line-height:1.4}
+.banner-hoy.open{background:linear-gradient(90deg,#2E9E5B,#3DDC84)}
+.banner-hoy.closed{background:var(--morado-d)}
+.reloj-kura{display:inline-flex;align-items:center;gap:.45rem;background:#fff;border:2px solid var(--morado);color:var(--morado);font-weight:800;padding:.45rem 1.15rem;border-radius:999px;font-size:.9rem;margin-top:1.2rem;box-shadow:0 4px 14px rgba(123,47,242,.2)}
+.reloj-kura.open{border-color:var(--verde);color:#0B7A3E;background:#EAFBF1}
+.reloj-kura.closed{border-color:var(--morado);background:var(--morado-soft)}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
@@ -228,6 +291,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <body>
 <a class="skip" href="#zonas">Saltar al contenido</a>
 <div class="rainbow"></div>
+<div class="banner-hoy" id="bannerHoy" role="status">⏳ Cargando estado…</div>
 
 <nav class="nav">
   <div class="container nav-in">
@@ -260,6 +324,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <span>♿ Baños universales</span>
         <span>☕ Cafetería de especialidad</span>
       </div>
+      <div class="reloj-kura" id="relojKura">⏰ Cargando…</div>
     </div>
     <div class="hero-photo">
       <div class="hero-stories">
