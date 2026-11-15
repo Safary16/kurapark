@@ -137,6 +137,7 @@ section{padding:4.2rem 0}
 .pop-msg{margin-top:.7rem;background:#DFF7EA;border-radius:14px;padding:.6rem 1rem;color:#0B7A3E;font-weight:800;text-align:center;max-width:680px;margin-left:auto;margin-right:auto}
 #popScore{background:var(--amarillo);color:var(--ink);border-radius:999px;padding:.2rem .8rem;font-size:.9rem}
 #popTime{background:var(--morado-soft);border-radius:999px;padding:.2rem .8rem;font-size:.9rem}
+#runner{width:100%;max-width:680px;display:block;margin:0 auto;border-radius:22px;box-shadow:var(--sombra);background:linear-gradient(#F7EFFF,#EDE0FF);touch-action:manipulation;cursor:pointer}
 .firma{margin-top:1rem;opacity:.85;font-size:.85rem}
 .firma b{color:var(--rosa)}
 /* MAPA & JUEGO */
@@ -450,6 +451,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
           <button class="btn" id="popStart" style="padding:.5rem 1.3rem;font-size:.95rem">▶ ¡A jugar!</button>
         </div>
         <p id="popMsg" class="pop-msg" hidden></p>
+      </div>
+      <div class="mapa-card wide reveal">
+        <h3>🏃 Kura Runner — ¡no pares!</h3>
+        <p style="font-size:.92rem;color:#6E5A8C;margin-bottom:.8rem">Kura corre por el parque y tú lo ayudas a saltar los obstáculos. Un toque para saltar — la velocidad sube, ¡aguanta lo que más puedas!</p>
+        <canvas id="runner" width="680" height="360"></canvas>
+        <div class="pop-hud">
+          <span id="runScore">🏁 0</span>
+          <span id="runBest">🏆 —</span>
+          <span style="font-size:.8rem;color:#6E5A8C">Espacio / toque para saltar</span>
+        </div>
       </div>
     </div>
   </div>
@@ -872,6 +883,180 @@ btn.addEventListener('click',()=>{
 });
 cv.addEventListener('pointerdown', onPointer);
 reset();
+})();
+
+
+
+// ===== KURA RUNNER 🏃 (homenaje al dino) =====
+(()=>{
+const cv=document.getElementById('runner'); if(!cv) return;
+const cx=cv.getContext('2d');
+const W=cv.width, H=cv.height, GY=H-54;
+let state='idle'; // idle | run | over
+let last, speed, score, best=+(localStorage.getItem('kura_runner_best')||0);
+let kx=96, ky=GY, vy=0, r=21, onGround=true, roll=0;
+let obs=[], clouds=[], distNext=0, groundOff=0;
+const scoreEl=document.getElementById('runScore'), bestEl=document.getElementById('runBest');
+const COLS=['#FF59B4','#FFC93C','#38B6FF','#3DDC84','#7B2FF2','#FF7EC4'];
+let AC=null;
+function ac(){ if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return AC; }
+function resumeA(){ const a=ac(); if(a&&a.state==='suspended') a.resume(); }
+function tone(f,d,type,v,when){
+  const a=ac(); if(!a||a.state!=='running') return;
+  const o=a.createOscillator(), g=a.createGain();
+  o.type=type||'sine'; o.frequency.value=f;
+  g.gain.setValueAtTime(v||.1, a.currentTime+(when||0));
+  g.gain.exponentialRampToValueAtTime(.0001, a.currentTime+(when||0)+d);
+  o.connect(g).connect(a.destination); o.start(a.currentTime+(when||0)); o.stop(a.currentTime+(when||0)+d+.02);
+}
+const sfxJump=()=>{ tone(300,.1,'triangle',.09); tone(420,.08,'triangle',.07,.04); };
+const sfxCrash=()=>{ tone(200,.25,'sawtooth',.14); tone(130,.32,'sawtooth',.12,.07); };
+const sfxRec=()=>{ [523,659,784,1047].forEach((f,i)=>tone(f,.15,'triangle',.12,i*.08)); };
+function drawKura(){
+  cx.save();
+  cx.translate(kx,ky); cx.rotate(roll);
+  const g=cx.createRadialGradient(-r*.35,-r*.35,r*.15,0,0,r);
+  g.addColorStop(0,'#C9A0FF'); g.addColorStop(1,'#5B1DB8');
+  cx.beginPath(); cx.arc(0,0,r,0,7); cx.fillStyle=g; cx.fill();
+  // ojos (girados con él — efecto cómico)
+  cx.fillStyle='#fff';
+  cx.beginPath(); cx.arc(-r*.28,-r*.22,r*.19,0,7); cx.fill();
+  cx.beginPath(); cx.arc(r*.28,-r*.22,r*.19,0,7); cx.fill();
+  cx.fillStyle='#241435';
+  cx.beginPath(); cx.arc(-r*.22,-r*.25,r*.085,0,7); cx.fill();
+  cx.beginPath(); cx.arc(r*.34,-r*.25,r*.085,0,7); cx.fill();
+  cx.strokeStyle='#fff'; cx.lineWidth=2.4; cx.lineCap='round';
+  cx.beginPath(); cx.arc(0,r*.02,r*.28,0.15*Math.PI,0.85*Math.PI); cx.stroke();
+  cx.restore();
+}
+function reset(run){
+  state=run?'run':'idle'; last=performance.now();
+  speed=230; score=0; obs=[]; distNext=220; ky=GY; vy=0; onGround=true; roll=0;
+  scoreEl.textContent='🏁 0'; bestEl.textContent='🏆 '+(best||'—');
+}
+function startRun(){ resumeA(); reset(true); }
+function jump(){
+  if(state==='idle'){ startRun(); }
+  if(state!=='run') return;
+  if(!onGround) return;
+  vy=-640; onGround=false; sfxJump();
+}
+function gameOver(){
+  state='over';
+  if(score>best){
+    best=Math.floor(score); localStorage.setItem('kura_runner_best',best);
+    bestEl.textContent='🏆 '+best; sfxRec();
+    if(navigator.vibrate) navigator.vibrate([60,50,90]);
+    const cols=['#7B2FF2','#FF59B4','#FFC93C','#3DDC84','#38B6FF'];
+    const wrap=document.createElement('div'); wrap.className='confetti';
+    for(let i=0;i<34;i++){const c=document.createElement('i'); c.style.cssText='left:'+(Math.random()*100)+'%;animation-delay:'+(Math.random()*.5)+'s;background:'+cols[i%5]; wrap.appendChild(c);}
+    document.body.appendChild(wrap); setTimeout(()=>wrap.remove(),2100);
+  } else sfxCrash();
+}
+function hitTest(o){
+  if(o.type==='ball'){
+    const dx=o.x-kx, dy=o.y-ky;
+    return dx*dx+dy*dy < (o.r+r)*(o.r+r);
+  }
+  // tube: rect sobre el suelo
+  const rx1=o.x, rx2=o.x+30, ry1=GY-62, ry2=GY;
+  const ccx=Math.max(rx1,Math.min(kx,rx2)), ccy=Math.max(ry1,Math.min(ky,ry2));
+  const dx=kx-ccx, dy=ky-ccy;
+  return dx*dx+dy*dy < r*r;
+}
+function loop(now){
+  const dt=Math.min(.05,(now-last)/1000)||.016; last=now;
+  if(state==='run'){
+    speed=Math.min(560, speed+dt*7);
+    score+=dt*38*(1+speed/420);
+    scoreEl.textContent='🏁 '+Math.floor(score);
+    roll+=dt*speed/26;
+    // gravedad
+    if(!onGround){ vy+=1750*dt; ky+=vy*dt; if(ky>=GY){ ky=GY; vy=0; onGround=true; } }
+    // obstáculos
+    distNext-=speed*dt;
+    if(distNext<=0){
+      const type=Math.random()<.52?'ball':'tube';
+      obs.push({type,x:W+50,y:GY,r:type==='ball'?14+Math.random()*14:0,c:COLS[(Math.random()*COLS.length)|0],face:Math.random()<.6});
+      distNext=260+Math.random()*190+speed*.28;
+    }
+    for(let i=obs.length-1;i>=0;i--){ const o=obs[i]; o.x-=speed*dt; if(o.x+40<0) obs.splice(i,1); }
+    for(const o of obs){ if(hitTest(o)){ gameOver(); break; } }
+    groundOff=(groundOff+speed*dt)%40;
+    if(state==='over') return; // dibujar overlay en el mismo frame
+  }
+  if(clouds.length<4 && Math.random()<dt*.5) clouds.push({x:W+30,y:30+Math.random()*80,s:0.7+Math.random()*.6});
+  clouds.forEach(c=>{ c.x-=dt*(30*c.s); });
+  clouds=clouds.filter(c=>c.x>-80);
+  drawWorld();
+  if(state==='idle'){
+    cx.fillStyle='rgba(36,20,53,.75)'; cx.beginPath(); cx.roundRect(W/2-150,136,300,64,18); cx.fill();
+    cx.fillStyle='#fff'; cx.font='800 21px sans-serif'; cx.textAlign='center'; cx.textBaseline='middle';
+    cx.fillText('✅ Toca / Espacio para correr', W/2, 168);
+  } else if(state==='over'){
+    cx.fillStyle='rgba(36,20,53,.8)'; cx.beginPath(); cx.roundRect(W/2-170,92,340,150,20); cx.fill();
+    cx.fillStyle='#fff'; cx.textAlign='center'; cx.textBaseline='middle';
+    cx.font='800 26px sans-serif'; cx.fillText('💥 ¡Chocaste!', W/2, 128);
+    cx.font='800 18px sans-serif'; cx.fillStyle='#FFC93C';
+    cx.fillText('🏁 '+Math.floor(score)+(score>best&&score>0?'  🏆 ¡NUEVO RÉCORD!':''), W/2, 162);
+    cx.fillStyle='rgba(255,255,255,.85)'; cx.font='700 15px sans-serif';
+    cx.fillText('Toca o presiona espacio para otra vez', W/2, 198);
+    cx.fillText('🏆 Mejor: '+best, W/2, 222);
+  }
+  if(state!=='over') requestAnimationFrame(loop);
+  else requestAnimationFrame(loop); // seguir animando el fondo
+}
+function drawWorld(){
+  cx.clearRect(0,0,W,H);
+  const sky=cx.createLinearGradient(0,0,0,H);
+  sky.addColorStop(0,'#F3EBFF'); sky.addColorStop(.75,'#EDE0FF'); sky.addColorStop(1,'#FFD9EC');
+  cx.fillStyle=sky; cx.fillRect(0,0,W,H);
+  // sol
+  cx.beginPath(); cx.arc(W-70,54,24,0,7); cx.fillStyle='#FFC93C'; cx.fill();
+  cx.beginPath(); cx.arc(W-70,54,34,0,7); cx.fillStyle='rgba(255,201,60,.25)'; cx.fill();
+  // nubes
+  cx.fillStyle='rgba(255,255,255,.9)';
+  clouds.forEach(c=>{ cx.beginPath(); cx.ellipse(c.x,c.y,30*c.s,16*c.s,0,0,7); cx.fill(); });
+  // piso caramelo
+  cx.fillStyle='#EFE4FF'; cx.fillRect(0,GY-8,W,H-GY+8);
+  for(let i=-1;i<W/40+1;i++){ const x=i*40-groundOff; cx.fillStyle=((i%2)===0)?'#FFFFFF':'#FFD9EC'; cx.fillRect(x,GY-8,40,10); }
+  cx.fillStyle='#7B2FF2'; cx.fillRect(0,GY+2,W,6);
+  // obstáculos
+  obs.forEach(o=>{
+    if(o.type==='ball'){
+      cx.beginPath(); cx.arc(o.x,o.y,o.r,0,7);
+      const g=cx.createRadialGradient(o.x-o.r*.3,o.y-o.r*.3,o.r*.12,o.x,o.y,o.r);
+      g.addColorStop(0,'#fff'); g.addColorStop(.35,o.c); g.addColorStop(1,'rgba(0,0,0,.28)');
+      cx.fillStyle=g; cx.fill();
+      if(o.face){
+        cx.fillStyle='#fff';
+        cx.beginPath(); cx.arc(o.x-o.r*.3,o.y-o.r*.15,o.r*.16,0,7); cx.fill();
+        cx.beginPath(); cx.arc(o.x+o.r*.3,o.y-o.r*.15,o.r*.16,0,7); cx.fill();
+      }
+    } else {
+      // tubo del laberinto
+      cx.fillStyle='#7B2FF2'; cx.beginPath(); cx.roundRect(o.x,GY-62,30,62,8); cx.fill();
+      cx.fillStyle='#9A4BFF'; cx.beginPath(); cx.roundRect(o.x-3,GY-70,36,14,7); cx.fill();
+      cx.fillStyle='rgba(255,255,255,.35)'; cx.fillRect(o.x+6,GY-58,7,44);
+    }
+  });
+  // Kura
+  drawKura();
+  // score en canvas
+  cx.fillStyle='#5B1DB8'; cx.font='800 17px sans-serif'; cx.textAlign='left'; cx.textBaseline='top';
+  cx.fillText('🏁 '+Math.floor(score), 14, 12);
+}
+function doAction(){
+  if(state==='over'){ startRun(); return; }
+  if(state==='idle'||state==='run'){ jump(); }
+}
+cv.addEventListener('pointerdown',e=>{ e.preventDefault(); resumeA(); doAction(); });
+document.addEventListener('keydown',e=>{
+  if(e.key===' '||e.key==='ArrowUp'){ e.preventDefault(); if(state==='idle'||state==='run'||state==='over') doAction(); }
+});
+reset(false);
+for(let i=0;i<3;i++) clouds.push({x:80+i*220,y:34+Math.random()*70,s:.8});
+requestAnimationFrame(loop);
 })();
 
 
