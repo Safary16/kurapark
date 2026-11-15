@@ -4,190 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KURAPARK — Parque de Juegos Indoor en Curacaví</title>
-<meta name="description" content="KURAPARK es el primer centro de entretenimiento indoor para niños y familias en Curacaví: toboganes, piscina de pelotas, laberintos, trampolines, juegos sensoriales y cafetería. Amplio estacionamiento.">
+<meta name="description" content="KURAPARK es el primer centro de entretenimiento indoor para niños y familias en Curacaví: toboganes, piscina de pelotas, laberintos, trampolines, juegos sensoriales, cafetería de especialidad y cumpleaños inolvidables. Amplio estacionamiento y baños universales.">
 <meta property="og:title" content="KURAPARK — Parque de Juegos Indoor en Curacaví">
-<meta property="og:description" content="Toboganes, piscina de pelotas, laberintos, trampolines y cafetería. El primer parque de juegos indoor de Curacaví. ¡Ven a jugar!">
+<meta property="og:description" content="El primer parque de juegos indoor de Curacaví. ¡Disfrutar no tiene edad!">
+<meta property="og:image" content="https://safary16.github.io/kurapark/img/apertura1.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#FF5A5F">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛝</text></svg>">
+<meta name="theme-color" content="#7B2FF2">
+<link rel="icon" href="img/favicon.png">
 <style>
 :root{
-  --coral:#FF5A5F; --coral-d:#E04850; --amarillo:#FFC93C; --turquesa:#2EC4B6;
-  --morado:#7C5CBF; --ink:#2B2140; --crema:#FFF9F0; --blanco:#FFFFFF;
-  --sombra:0 10px 30px rgba(43,33,64,.12);
-  --radius:24px;
-  --font-head:'Baloo 2','Fredoka',system-ui,sans-serif;
-  --font-body:'Nunito',system-ui,sans-serif;
+  --morado:#7B2FF2; --morado-d:#5B1DB8; --morado-soft:#F3EBFF;
+  --rosa:#FF59B4; --verde:#3DDC84; --celeste:#38B6FF; --amarillo:#FFC93C;
+  --ink:#241435; --blanco:#fff;
+  --sombra:0 12px 32px rgba(91,29,184,.16);
+  --radius:26px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--ink);background:var(--crema);line-height:1.6;overflow-x:hidden}
-h1,h2,h3{font-family:var(--font-head);line-height:1.15}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--blanco);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.12}
 img{max-width:100%;display:block}
-a{color:var(--coral);text-decoration:none}
+a{color:var(--morado);text-decoration:none}
 .container{width:min(1100px,92%);margin:0 auto}
+.rainbow{height:6px;background:linear-gradient(90deg,var(--rosa) 0 25%,var(--amarillo) 25% 50%,var(--verde) 50% 75%,var(--celeste) 75% 100%)}
 
-/* ===== NAV ===== */
-.nav{position:sticky;top:0;z-index:50;background:rgba(255,249,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(43,33,64,.06)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
-.logo{font-family:var(--font-head);font-weight:800;font-size:1.5rem;color:var(--ink);display:flex;align-items:center;gap:.4rem}
-.logo span{color:var(--coral)}
-.nav-links{display:flex;gap:1.4rem;align-items:center}
-.nav-links a{color:var(--ink);font-weight:700;font-size:.95rem}
-.nav-links a:hover{color:var(--coral)}
-.btn{display:inline-block;background:var(--coral);color:#fff;font-weight:800;padding:.75rem 1.6rem;border-radius:999px;box-shadow:0 6px 18px rgba(255,90,95,.35);transition:transform .18s,box-shadow .18s;border:none;cursor:pointer;font-family:var(--font-body);font-size:1rem}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,90,95,.45)}
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(36,20,53,.07)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.65rem 0}
+.logo{font-family:'Baloo 2';font-weight:800;font-size:1.45rem;color:var(--morado);display:flex;align-items:center;gap:.45rem}
+.logo img{width:34px;height:34px;border-radius:50%}
+.nav-links{display:flex;gap:1.3rem;align-items:center}
+.nav-links a{color:var(--ink);font-weight:800;font-size:.93rem}
+.nav-links a:hover{color:var(--morado)}
+.btn{display:inline-block;background:var(--morado);color:#fff;font-weight:800;padding:.75rem 1.6rem;border-radius:999px;box-shadow:0 6px 18px rgba(123,47,242,.35);transition:transform .18s,box-shadow .18s;border:none;cursor:pointer;font-size:1rem}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(123,47,242,.45)}
 .btn-wa{background:#25D366;box-shadow:0 6px 18px rgba(37,211,102,.35)}
-.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-ghost{background:transparent;color:var(--morado);box-shadow:inset 0 0 0 3px var(--morado)}
 @media(max-width:760px){.nav-links a:not(.btn){display:none}}
 
-/* ===== HERO ===== */
-.hero{position:relative;padding:4.5rem 0 5.5rem;background:
- radial-gradient(600px 300px at 85% 10%,rgba(255,201,60,.25),transparent),
- radial-gradient(500px 280px at 10% 90%,rgba(46,196,182,.18),transparent);
- overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+/* HERO */
+.hero{position:relative;padding:3.6rem 0 4.6rem;background:
+ radial-gradient(560px 320px at 88% 6%,rgba(255,89,180,.10),transparent),
+ radial-gradient(520px 300px at 6% 92%,rgba(56,182,255,.10),transparent),
+ linear-gradient(180deg,#fff,var(--morado-soft))}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.8rem;align-items:center}
 @media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
-.hero-kicker{display:inline-block;background:var(--amarillo);color:var(--ink);font-weight:800;padding:.35rem 1rem;border-radius:999px;font-size:.85rem;letter-spacing:.5px;margin-bottom:1rem}
-.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800}
-.hero h1 em{color:var(--coral);font-style:normal}
-.hero p.lead{font-size:1.15rem;margin:1.1rem 0 1.8rem;max-width:34rem}
-.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap}
-.hero-badges{display:flex;gap:1.2rem;margin-top:1.8rem;flex-wrap:wrap;font-size:.9rem;font-weight:700;color:#6B5F85}
+.hero-kicker{display:inline-block;background:var(--amarillo);color:var(--ink);font-weight:800;padding:.35rem 1rem;border-radius:999px;font-size:.85rem;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800}
+.hero h1 em{color:var(--morado);font-style:normal}
+.hero p.lead{font-size:1.12rem;margin:1rem 0 1.7rem;max-width:34rem}
+.hero-cta{display:flex;gap:.85rem;flex-wrap:wrap}
+.hero-badges{display:flex;gap:1.1rem;margin-top:1.6rem;flex-wrap:wrap;font-size:.88rem;font-weight:800;color:#6E5A8C}
 .hero-badges span{display:flex;align-items:center;gap:.4rem}
-/* blobs decorativos */
-.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;animation:float 7s ease-in-out infinite}
-.b1{width:90px;height:90px;background:var(--amarillo);top:12%;left:6%;animation-delay:0s}
-.b2{width:56px;height:56px;background:var(--turquesa);top:70%;left:2%;animation-delay:1.2s}
-.b3{width:70px;height:70px;background:var(--morado);top:18%;right:4%;animation-delay:2.1s}
-.b4{width:44px;height:44px;background:var(--coral);top:80%;right:8%;animation-delay:.6s}
-@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(8deg)}}
+/* foto real hero */
+.hero-photo{position:relative}
+.hero-photo img{border-radius:32px;box-shadow:var(--sombra);aspect-ratio:1/1.05;object-fit:cover;width:100%}
+.float-chip{position:absolute;background:#fff;border-radius:18px;box-shadow:var(--sombra);padding:.7rem 1.05rem;font-weight:800;font-family:'Baloo 2';display:flex;align-items:center;gap:.55rem;font-size:.95rem}
+.fc1{top:-14px;left:-18px;transform:rotate(-5deg)}
+.fc2{bottom:22px;right:-12px;transform:rotate(3deg)}
+@media(max-width:860px){.fc1{left:-6px}.fc2{right:-4px}}
+.chip-dot{width:14px;height:14px;border-radius:50%}
 
-/* ilustración hero (CSS puro) */
-.hero-art{position:relative;min-height:340px}
-@media(max-width:860px){.hero-art{min-height:260px}}
-.park-card{position:absolute;background:#fff;border-radius:var(--radius);box-shadow:var(--sombra);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.9rem;font-weight:800;font-family:var(--font-head)}
-.park-card .ic{font-size:2rem}
-.pc1{top:4%;left:8%;transform:rotate(-4deg)}
-.pc2{top:32%;right:0;transform:rotate(3deg)}
-.pc3{bottom:6%;left:16%;transform:rotate(2deg)}
-.pc4{top:60%;left:0;transform:rotate(-2deg)}
+/* SECCIONES */
+section{padding:4.2rem 0}
+.sec-head{text-align:center;max-width:44rem;margin:0 auto 2.8rem}
+.sec-head h2{font-size:clamp(1.7rem,3.5vw,2.35rem)}
+.sec-head p{color:#6E5A8C;margin-top:.55rem}
+.tag{display:inline-block;background:var(--morado);color:#fff;font-weight:800;font-size:.78rem;padding:.3rem .95rem;border-radius:999px;margin-bottom:.75rem;letter-spacing:.6px}
 
-/* ===== SECCIONES ===== */
-section{padding:4.5rem 0}
-.sec-head{text-align:center;max-width:42rem;margin:0 auto 3rem}
-.sec-head h2{font-size:clamp(1.7rem,3.5vw,2.4rem)}
-.sec-head p{color:#6B5F85;margin-top:.6rem}
-.tag{display:inline-block;background:var(--turquesa);color:#fff;font-weight:800;font-size:.8rem;padding:.3rem .9rem;border-radius:999px;margin-bottom:.8rem;letter-spacing:.5px}
+/* ZONAS */
+.zonas{background:var(--blanco)}
+.zona-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1.3rem}
+.zona{background:var(--morado-soft);border-radius:var(--radius);padding:1.5rem;transition:transform .2s,box-shadow .2s}
+.zona:hover{transform:translateY(-6px);box-shadow:var(--sombra);background:#fff}
+.zona .ic{font-size:2.3rem;margin-bottom:.6rem;display:inline-block}
+.zona h3{font-size:1.12rem;margin-bottom:.25rem}
+.zona p{font-size:.9rem;color:#6E5A8C}
+.zona:nth-child(2) .ic{color:var(--rosa)}
 
-/* zonas */
-.zonas{background:#fff}
-.zona-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem}
-.zona{background:var(--crema);border-radius:var(--radius);padding:1.6rem;transition:transform .2s,box-shadow .2s;border:2px solid transparent}
-.zona:hover{transform:translateY(-6px);box-shadow:var(--sombra);border-color:var(--amarillo)}
-.zona .ic{font-size:2.4rem;margin-bottom:.7rem;display:inline-block}
-.zona h3{font-size:1.15rem;margin-bottom:.3rem}
-.zona p{font-size:.92rem;color:#6B5F85}
+/* FIESTAS (cumple + cursos) */
+.fiestas{background:linear-gradient(140deg,var(--morado),#9A4BFF 55%,var(--rosa));color:#fff}
+.fiestas .tag{background:var(--amarillo);color:var(--ink)}
+.fiestas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+@media(max-width:860px){.fiestas-grid{grid-template-columns:1fr}}
+.fiesta-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:var(--radius);padding:1.7rem;backdrop-filter:blur(5px)}
+.fiesta-card .foto{border-radius:18px;margin-bottom:1.1rem;width:100%;aspect-ratio:16/9;object-fit:cover}
+.fiesta-card h3{font-size:1.4rem;margin-bottom:.5rem}
+.fiesta-card p{opacity:.95;margin-bottom:.8rem}
+.fiesta-card ul{list-style:none;display:grid;gap:.45rem;margin-bottom:1.3rem}
+.fiesta-card li{display:flex;gap:.55rem;align-items:flex-start;font-weight:700;font-size:.95rem}
+.fiesta-card li::before{content:"✓";background:var(--amarillo);color:var(--ink);font-weight:900;border-radius:50%;width:1.35rem;height:1.35rem;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.82rem;margin-top:.12rem}
+.fiesta-card .btn{background:#fff;color:var(--morado);box-shadow:none}
+.fiesta-card .btn:hover{box-shadow:0 8px 20px rgba(0,0,0,.18)}
 
-/* cumpleaños */
-.cumple{background:linear-gradient(135deg,var(--morado),#9F7FE0);color:#fff}
-.cumple .tag{background:var(--amarillo);color:var(--ink)}
-.cumple-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;align-items:center}
-@media(max-width:860px){.cumple-grid{grid-template-columns:1fr}}
-.cumple h2{font-size:clamp(1.8rem,3.5vw,2.5rem)}
-.cumple p{margin:.8rem 0 1.4rem;opacity:.95}
-.cumple ul{list-style:none;display:grid;gap:.55rem;margin-bottom:1.8rem}
-.cumple li{display:flex;gap:.6rem;align-items:flex-start;font-weight:600}
-.cumple li::before{content:"✓";background:var(--amarillo);color:var(--ink);font-weight:900;border-radius:50%;width:1.4rem;height:1.4rem;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;margin-top:.15rem}
-.cumple-note{background:rgba(255,255,255,.14);border:1px dashed rgba(255,255,255,.4);border-radius:18px;padding:1.4rem;backdrop-filter:blur(4px)}
-.cumple-note h3{margin-bottom:.5rem}
-.cumple-note p{font-size:.95rem;margin:.4rem 0}
+/* GALERÍA */
+.galeria{background:#fff}
+.gal-grid{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:1rem}
+@media(max-width:760px){.gal-grid{grid-template-columns:1fr;grid-template-rows:auto}}
+.gal-grid img{border-radius:22px;object-fit:cover;width:100%;height:100%}
+.gal-a{grid-row:span 2;aspect-ratio:3/4}
+.gal-b,.gal-c{aspect-ratio:16/10}
+@media(max-width:760px){.gal-a{grid-row:auto;aspect-ratio:1/1}}
+.gal-caption{text-align:center;margin-top:1.4rem;color:#6E5A8C;font-weight:700}
 
-/* info práctica */
-.info{background:#fff}
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
-.info-card{background:var(--crema);border-radius:var(--radius);padding:1.6rem;border-top:6px solid var(--coral)}
-.info-card:nth-child(2){border-top-color:var(--turquesa)}
-.info-card:nth-child(3){border-top-color:var(--amarillo)}
-.info-card:nth-child(4){border-top-color:var(--morado)}
-.info-card h3{font-size:1.1rem;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+/* INFO */
+.info{background:var(--morado-soft)}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1.3rem}
+.info-card{background:#fff;border-radius:var(--radius);padding:1.6rem;border-top:6px solid var(--morado);box-shadow:0 4px 14px rgba(91,29,184,.07)}
+.info-card:nth-child(2){border-top-color:var(--celeste)}
+.info-card:nth-child(3){border-top-color:var(--verde)}
+.info-card:nth-child(4){border-top-color:var(--rosa)}
+.info-card h3{font-size:1.1rem;margin-bottom:.6rem}
 .info-card table{width:100%;border-collapse:collapse;font-size:.93rem}
 .info-card td{padding:.3rem 0;vertical-align:top}
-.info-card td:first-child{font-weight:800;color:var(--coral);white-space:nowrap;padding-right:.8rem}
-.horario-tabla td:first-child{color:var(--ink)}
-.horario-tabla .dias{font-weight:800}
-.horario-tabla em{display:block;color:#6B5F85;font-style:normal;font-size:.85rem}
+.info-card td:first-child{font-weight:800;white-space:nowrap;padding-right:.8rem}
+.info-card em{display:block;color:#6E5A8C;font-style:normal;font-size:.85rem;margin-top:.3rem}
 .info-card address{font-style:normal;font-size:.95rem}
-.info-card address b{display:block;margin-top:.5rem}
 .pay-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
-.pay-tags span{background:#fff;border:1.5px solid var(--ink);border-radius:999px;padding:.2rem .8rem;font-size:.8rem;font-weight:800}
+.pay-tags span{background:var(--morado-soft);border-radius:999px;padding:.22rem .8rem;font-size:.8rem;font-weight:800}
+ul.extra{list-style:none;font-size:.93rem;display:grid;gap:.35rem}
+ul.extra li::before{content:"•";color:var(--morado);font-weight:900;margin-right:.4rem}
 
-/* CTA final */
-.cta{background:var(--ink);color:#fff;text-align:center;padding:5rem 0}
-.cta h2{font-size:clamp(1.8rem,3.5vw,2.6rem)}
-.cta p{opacity:.85;margin:.8rem auto 2rem;max-width:36rem}
-.cta .btn{font-size:1.1rem;padding:.9rem 2.2rem}
+/* CTA */
+.cta{background:var(--ink);color:#fff;text-align:center;padding:4.6rem 0}
+.cta h2{font-size:clamp(1.8rem,3.5vw,2.5rem)}
+.cta p{opacity:.85;margin:.7rem auto 1.8rem;max-width:36rem}
+.cta .btn{font-size:1.05rem;padding:.85rem 2.1rem}
+.cta .btn-wa{margin-top:.8rem;display:inline-block}
 
-/* footer */
-footer{background:#1E1730;color:#B9AED4;padding:2.5rem 0;font-size:.9rem}
-.foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+footer{background:#1A0E2E;color:#C9B8E8;padding:2.4rem 0;font-size:.9rem}
+.foot-grid{display:flex;justify-content:space-between;gap:1.8rem;flex-wrap:wrap;align-items:center}
 .foot-grid a{color:#fff;font-weight:700}
-
-/* floating WA mobile */
 .wa-float{position:fixed;bottom:1.2rem;right:1.2rem;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(37,211,102,.5);transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
 .wa-float svg{width:30px;height:30px;fill:#fff}
 @media(min-width:761px){.wa-float{display:none}}
-
-/* reveal on scroll */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.blob{animation:none}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
+<div class="rainbow"></div>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="container nav-in">
-    <a href="#" class="logo">KURA<span>PARK</span> 🛝</a>
+    <a href="#" class="logo"><img src="img/apertura2.jpg" alt="Logo KURAPARK"> KURAPARK</a>
     <div class="nav-links">
       <a href="#zonas">Zonas de juego</a>
-      <a href="#cumpleanos">Cumpleaños</a>
-      <a href="#visita">Horario y ubicación</a>
+      <a href="#fiestas">Cumpleaños y cursos</a>
+      <a href="#galeria">Galería</a>
+      <a href="#visita">Visítanos</a>
       <a class="btn btn-wa" href="https://wa.me/56953700192?text=Hola%20KURAPARK!%20Quiero%20consultar%20por%20entradas%20%2F%20cumplea%C3%B1os" target="_blank" rel="noopener">Escríbenos</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
   <div class="container hero-grid">
     <div>
       <span class="hero-kicker">🎉 El primer parque indoor de Curacaví</span>
-      <h1>Un parque de juegos <em>gigante</em> bajo techo, para jugar sin importar el clima</h1>
-      <p class="lead">Más de 140 m² de pura diversión para niños y niñas: toboganes, piscina de pelotas, laberintos, trampolines y juegos sensoriales. Los papás tienen su rincón con cafetería mientras los peques exploran con seguridad.</p>
+      <h1>Más de 140 m² de juegos bajo techo. <em>¡Disfrutar no tiene edad!</em></h1>
+      <p class="lead">Toboganes, piscina de pelotas, laberintos, trampolines y juegos sensoriales en un espacio familiar donde los peques juegan con seguridad — y los papás descansan con un café de especialidad.</p>
       <div class="hero-cta">
         <a class="btn" href="#visita">Planifica tu visita</a>
-        <a class="btn btn-ghost" href="#cumpleanos">🎂 Cumpleaños inolvidables</a>
+        <a class="btn btn-ghost" href="#fiestas">🎂 Cumpleaños y paseos</a>
       </div>
       <div class="hero-badges">
-        <span>🛝 140+ m² de juegos</span>
-        <span>👨‍👩‍👧 Para toda la familia</span>
         <span>🅿️ Amplio estacionamiento</span>
+        <span>♿ Baños universales</span>
+        <span>☕ Cafetería de especialidad</span>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="park-card pc1"><span class="ic">🛝</span> Toboganes</div>
-      <div class="park-card pc2"><span class="ic">⚽</span> Trampolín y básquet</div>
-      <div class="park-card pc3"><span class="ic">🎈</span> Piscina de pelotas</div>
-      <div class="park-card pc4"><span class="ic">☕</span> Cafetería para papás</div>
+    <div class="hero-photo">
+      <img src="img/apertura1.jpg" alt="Niños jugando en la piscina de pelotas de KURAPARK" width="640" height="672">
+      <div class="float-chip fc1"><span class="chip-dot" style="background:var(--rosa)"></span> Piscina de pelotas</div>
+      <div class="float-chip fc2"><span class="chip-dot" style="background:var(--verde)"></span> ¡Juego seguro!</div>
     </div>
   </div>
 </header>
 
-<!-- ZONAS -->
 <section class="zonas" id="zonas">
   <div class="container">
     <div class="sec-head reveal">
@@ -196,43 +192,68 @@ footer{background:#1E1730;color:#B9AED4;padding:2.5rem 0;font-size:.9rem}
       <p>Cada rincón de KURAPARK está pensado para una edad y una forma distinta de jugar.</p>
     </div>
     <div class="zona-grid">
-      <div class="zona reveal"><span class="ic">🛝</span><h3>Zona de toboganes y playground</h3><p>Deslizantes, escaladas y escondites para los más aventureros.</p></div>
-      <div class="zona reveal"><span class="ic">🎈</span><h3>Piscina de pelotas</h3><p>El clásico favorito: sumergirse entre cientos de pelotas de colores.</p></div>
-      <div class="zona reveal"><span class="ic">🧩</span><h3>Laberintos con obstáculos</h3><p>Recorridos que desafían equilibrio, agilidad y valentía.</p></div>
-      <div class="zona reveal"><span class="ic">🌈</span><h3>Zona de juegos sensoriales</h3><p>Texturas y estímulos pensados para los más pequeños de la casa.</p></div>
-      <div class="zona reveal"><span class="ic">🏀</span><h3>Trampolín, básquet y dodgeball</h3><p>Salta y anota: energía para rato en nuestra zona deportiva.</p></div>
-      <div class="zona reveal"><span class="ic">☕</span><h3>Zona de espera para papás</h3><p>Cafetería con vista al juego: relájate mientras ellos se divierten.</p></div>
+      <div class="zona reveal"><span class="ic">🛝</span><h3>Zona de toboganes</h3><p>Playground con deslizantes y escondites para los más aventureros.</p></div>
+      <div class="zona reveal"><span class="ic">🎈</span><h3>Piscina de pelotas</h3><p>El clásico favorito: miles de pelotas para saltar y hundirse riendo.</p></div>
+      <div class="zona reveal"><span class="ic">🧩</span><h3>Laberintos con obstáculos</h3><p>Recorridos que desafían el equilibrio, la agilidad y la valentía.</p></div>
+      <div class="zona reveal"><span class="ic">🌈</span><h3>Juegos sensoriales</h3><p>Texturas y estímulos pensados para estimular a los más pequeños.</p></div>
+      <div class="zona reveal"><span class="ic">🏀</span><h3>Trampolín, básquet y dodgeball</h3><p>Salta, anota y esquivа: energía de sobra en la zona deportiva.</p></div>
+      <div class="zona reveal"><span class="ic">☕</span><h3>Zona de espera para papás</h3><p>Cafetería de especialidad con vista al juego. Tú también mereces descansar.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CUMPLEAÑOS -->
-<section class="cumple" id="cumpleanos">
-  <div class="container cumple-grid">
-    <div class="reveal">
-      <span class="tag">CELEBRACIONES</span>
-      <h2>Cumpleaños que los niños no olvidan</h2>
-      <p>Arrienda KURAPARK para el cumple de tu peque: juegos, comida y cero estrés para ti. Nos encargamos de todo para que solo tengas que celebrar.</p>
-      <ul>
-        <li>Acceso exclusivo o zonas reservadas según el plan</li>
-        <li>Animación y supervisión durante la fiesta</li>
-        <li>Opciones de coffee break y menú para los invitados</li>
-        <li>Decoración y pastel coordinados contigo</li>
-        <li>Amplio estacionamiento para todas las familias</li>
-      </ul>
-      <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Quiero%20cotizar%20un%20cumplea%C3%B1os%20en%20KURAPARK%20%F0%9F%8E%82" target="_blank" rel="noopener">Cotiza el cumpleaños por WhatsApp</a>
+<section class="fiestas" id="fiestas">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">CELEBRA CON NOSOTROS</span>
+      <h2>Cumpleaños y paseos que no se olvidan</h2>
+      <p>Tú celebras, nosotros nos encargamos de todo lo demás.</p>
     </div>
-    <div class="cumple-note reveal">
-      <h3>📋 ¿Cómo reservar?</h3>
-      <p><b>1.</b> Escríbenos por WhatsApp con la fecha y el número de invitados.</p>
-      <p><b>2.</b> Te enviamos los planes disponibles y armamos el paquete a tu medida.</p>
-      <p><b>3.</b> Confirmas con reserva y ¡listo! Solo llega a celebrar.</p>
-      <p style="margin-top:1rem;font-size:.9rem;opacity:.85">Fechas de fin de semana se llenan rápido — escríbenos con tiempo. 🎈</p>
+    <div class="fiestas-grid">
+      <div class="fiesta-card reveal">
+        <img class="foto" src="img/cumple.jpg" alt="Niño sonriendo en el área de juegos de KURAPARK" loading="lazy">
+        <h3>🎂 Cumpleaños</h3>
+        <p>Un espacio ideal para los más pequeños: juegos, comida y cero estrés para ti.</p>
+        <ul>
+          <li>Zonas reservadas para tu celebración</li>
+          <li>Acceso ilimitado a las zonas de juego</li>
+          <li>Opciones de menú y coffee break</li>
+          <li>Amplio estacionamiento para las familias invitadas</li>
+        </ul>
+        <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Quiero%20cotizar%20un%20cumplea%C3%B1os%20en%20KURAPARK%20%F0%9F%8E%82" target="_blank" rel="noopener">Cotiza tu cumpleaños</a>
+      </div>
+      <div class="fiesta-card reveal">
+        <img class="foto" src="img/hero.jpg" alt="Paseos de curso y fin de año en KURAPARK" loading="lazy">
+        <h3>🎒 Paseos de curso y fin de año</h3>
+        <p>Despide el año a pura entretención: colegios y jardines ya están agendando, ¡y los valores para cursos son súper convenientes!</p>
+        <ul>
+          <li>Para todos los colegios y jardines</li>
+          <li>Supervisión y seguridad durante toda la visita</li>
+          <li>Fechas de noviembre y diciembre con cupos</li>
+          <li>Cotización rápida por WhatsApp o DM</li>
+        </ul>
+        <a class="btn" href="https://wa.me/56953700192?text=Hola!%20Somos%20un%20colegio%2Fjard%C3%ADn%20y%20queremos%20cotizar%20un%20paseo%20de%20fin%20de%20a%C3%B1o%20%F0%9F%8E%92" target="_blank" rel="noopener">Cotiza tu paseo de curso</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- VISITA -->
+<section class="galeria" id="galeria">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">KURALOVERS</span>
+      <h2>Así se juega en KURAPARK</h2>
+      <p>Fotos reales de nuestro parque — siempre hay algo happening en nuestras redes.</p>
+    </div>
+    <div class="gal-grid reveal">
+      <img class="gal-a" src="img/apertura1.jpg" alt="Vista superior de niños jugando en la piscina de pelotas" loading="lazy">
+      <img class="gal-b" src="img/cumple.jpg" alt="Niño celebrando en el parque" loading="lazy">
+      <img class="gal-c" src="img/hero.jpg" alt="Promoción de paseos de curso en KURAPARK" loading="lazy">
+    </div>
+    <p class="gal-caption reveal">📸 Síguenos como <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener"><b>@kurapark_</b></a> para promos, concursos y novedades</p>
+  </div>
+</section>
+
 <section class="info" id="visita">
   <div class="container">
     <div class="sec-head reveal">
@@ -242,49 +263,52 @@ footer{background:#1E1730;color:#B9AED4;padding:2.5rem 0;font-size:.9rem}
     </div>
     <div class="info-grid">
       <div class="info-card reveal">
-        <h3>🕐 Horario <em style="font-size:.7rem;color:#6B5F85;font-weight:600">(otoño / invierno)</em></h3>
-        <table class="horario-tabla">
-          <tr><td class="dias">Mié – Jue</td><td>15:30 – 20:00</td></tr>
-          <tr><td class="dias">Vie – Dom</td><td>15:30 – 20:30</td></tr>
+        <h3>🕐 Horario <em style="display:inline;font-size:.72rem;color:#6E5A8C;font-weight:700">(otoño / invierno)</em></h3>
+        <table>
+          <tr><td>Mié – Jue</td><td>15:30 – 20:00</td></tr>
+          <tr><td>Vie – Dom</td><td>15:30 – 20:30</td></tr>
         </table>
-        <em>Lunes y martes cerrado.</em>
+        <em>Lunes y martes cerrado · Consulta horario de verano en nuestras redes</em>
       </div>
       <div class="info-card reveal">
         <h3>📍 Ubicación</h3>
         <address>
           Ambrosio O'Higgins #1730<br>
           Curacaví, Región Metropolitana
-          <b><a href="https://www.google.com/maps/search/?api=1&query=Ambrosio+O%27Higgins+1730+Curacav%C3%AD" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></b>
+          <b style="display:block;margin-top:.5rem"><a href="https://www.google.com/maps/search/?api=1&query=Ambrosio+O%27Higgins+1730+Curacav%C3%AD" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></b>
         </address>
       </div>
       <div class="info-card reveal">
         <h3>💳 Medios de pago</h3>
-        <p>Aceptamos:</p>
         <div class="pay-tags"><span>Efectivo</span><span>Débito</span></div>
+        <em>Cotizaciones de eventos por WhatsApp</em>
       </div>
       <div class="info-card reveal">
-        <h3>🅿️ Extras</h3>
-        <p>Amplio estacionamiento propio.</p>
-        <p>Cafetería para los papás con vista a las zonas de juego.</p>
+        <h3>✨ Extras</h3>
+        <ul class="extra">
+          <li>Amplio estacionamiento propio</li>
+          <li>Cafetería de especialidad</li>
+          <li>Baños universales ♿️</li>
+          <li>Zona de espera para papás</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta">
   <div class="container reveal">
-    <h2>¿Listo para el próximo playdate?</h2>
-    <p>Síguenos en Instagram para horarios de temporada, promociones y eventos especiales.</p>
-    <a class="btn" href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener">📸 @kurapark_ en Instagram</a>
+    <h2>¿Lista la próxima visita? Nosotros también te esperamos 🎈</h2>
+    <p>Escríbenos por WhatsApp o síguenos en Instagram para horarios de temporada, promociones y eventos.</p>
+    <a class="btn" href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener">📸 @kurapark_</a><br>
+    <a class="btn btn-wa" href="https://wa.me/56953700192?text=Hola%20KURAPARK!" target="_blank" rel="noopener">WhatsApp +56 9 5370 0192</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="container foot-grid">
     <div>
-      <b style="font-family:var(--font-head);font-size:1.2rem;color:#fff">KURAPARK 🛝</b><br>
+      <b style="font-family:'Baloo 2';font-size:1.2rem;color:#fff">KURAPARK</b><br>
       Parque de juegos indoor · Curacaví<br>
       Ambrosio O'Higgins #1730
     </div>
@@ -294,17 +318,15 @@ footer{background:#1E1730;color:#B9AED4;padding:2.5rem 0;font-size:.9rem}
       <a href="https://www.instagram.com/kurapark_/" target="_blank" rel="noopener">Instagram @kurapark_</a>
     </div>
   </div>
-  <div class="container" style="margin-top:1.6rem;opacity:.6;font-size:.8rem">© 2026 KURAPARK · Curacaví, Chile</div>
+  <div class="container" style="margin-top:1.5rem;opacity:.55;font-size:.78rem">© 2026 KURAPARK · Curacaví, Chile</div>
 </footer>
 
-<!-- WhatsApp flotante (móvil) -->
 <a class="wa-float" href="https://wa.me/56953700192?text=Hola%20KURAPARK!" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16 .8C7.5.8.6 7.7.6 16.2c0 2.7.7 5.4 2.1 7.7L.5 31.2l7.5-2.4c2.2 1.2 4.7 1.8 7.3 1.8h.1c8.5 0 15.4-6.9 15.4-15.4S24.5.8 16 .8zm0 28.1h-.1c-2.3 0-4.6-.6-6.6-1.8l-.5-.3-4.5 1.4 1.4-4.4-.3-.5c-1.3-2-2-4.4-2-6.8 0-7 5.7-12.7 12.7-12.7 3.4 0 6.6 1.3 9 3.7s3.7 5.6 3.7 9c-.1 7-5.8 12.4-12.8 12.4zm7-9.5c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.7-.2-1 .2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.7-.8c.2-.3.3-.5.4-.8.1-.3.1-.5-.1-.8-.2-.2-1-2.3-1.3-3.2-.4-.8-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.4-1.6 1.5-1.6 3.7s1.6 4.3 1.9 4.6c.2.3 3.1 4.8 7.6 6.7 1.1.5 1.9.7 2.5.9 1.1.3 2.1.3 2.9.2.9-.1 2.3-1 2.6-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
 </a>
 
 <script>
-// reveal on scroll
-const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && (e.target.classList.add('in'), io.unobserve(e.target))), {threshold:.15});
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && (e.target.classList.add('in'), io.unobserve(e.target))), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
